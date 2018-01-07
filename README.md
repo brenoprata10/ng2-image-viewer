@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <td align="center">imagens</td>
-            <td align="center">BASE64 Array</td>
+            <td align="center">BASE64[]</td>
             <td align="center"></td>
             <td align="center">NULL</td>
             <td align="justify">It is the array containing the base64 data, the component differs the images and the PDF files, so don't worry.</td>
@@ -93,7 +93,7 @@
 </section>
 <h3>Configuring the component:</h3>
 <section>
-    <p>The installation consists basically on a copy and paste process, you might have to ajust a feel paths on your project, but don't worry, this tutorial might cover all the steps required to install it.</p>
+    <p>The installation consists basically on a copy and paste process, you might have to ajust some paths on your project, but don't worry, this tutorial might cover all the steps required to install it.</p>
     <h4>Step 1:</h4>
     <ul>
         <li>
