@@ -28,7 +28,7 @@
             Jquery;
         </li>
         <li>
-            Material Icons (you can use your on icons customizing it on the <code>image-viewer.component.html</code> file);
+            Material Icons (you can use your own icons customizing it on the <code>image-viewer.component.html</code> file);
         </li>
     </ul>
 </section>
