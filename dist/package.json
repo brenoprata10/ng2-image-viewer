@@ -1,0 +1,28 @@
+{
+  "name": "ng2-image-viewer",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brenoprata10/ng2-image-viewer"
+  },
+  "author": {
+    "name": "brenoprata10",
+    "email": "brenoprata10@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brenoprata10/ng2-image-viewer/issues"
+  },
+  "main": "ng2-image-viewer.umd.js",
+  "module": "ng2-image-viewer.js",
+  "jsnext:main": "ng2-image-viewer.js",
+  "typings": "ng2-image-viewer.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}

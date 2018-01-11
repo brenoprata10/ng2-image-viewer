@@ -8,8 +8,6 @@ declare var ImageViewer: any;
  */
 @Component({
 
-  moduleId: module.id,
-
   selector: 'app-image-viewer',
 
   templateUrl: './image-viewer.component.html',
