@@ -72,7 +72,7 @@ var ImageViewerComponent = (function () {
      */
     function (changes) {
         var _this = this;
-        if (changes['imagens'] && this.isImagensPresentes()) {
+        if (changes['images'] && this.isImagensPresentes()) {
             this.inicializarVariaveisInput();
             this.inicializarImageViewer();
             setTimeout(function () {
@@ -87,8 +87,8 @@ var ImageViewerComponent = (function () {
      * @return {?}
      */
     function () {
-        return this.imagens
-            && this.imagens.length > 0;
+        return this.images
+            && this.images.length > 0;
     };
     /**
      * @return {?}
@@ -107,7 +107,7 @@ var ImageViewerComponent = (function () {
      */
     function () {
         this.indexImagemAtual = 1;
-        this.totalImagens = this.imagens.length;
+        this.totalImagens = this.images.length;
         this.wrapper = $("#" + this.idContainer);
         this.curSpan = this.wrapper.find('.current');
         this.viewer = ImageViewer(this.wrapper.find('.image-container'));
@@ -417,7 +417,7 @@ var ImageViewerComponent = (function () {
      * @return {?}
      */
     function () {
-        return this.imagens[this.indexImagemAtual - 1];
+        return this.images[this.indexImagemAtual - 1];
     };
     /**
      * @param {?} data

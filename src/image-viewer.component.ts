@@ -23,7 +23,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
   TOTAL_ROTACAO_GRAUS_VERTICAL = this.ROTACAO_PADRAO_GRAUS * 3;
 
   @Input() idContainer;
-  @Input() imagens: any[];
+  @Input() images: any[];
   @Input() rotate = true;
   @Input() download = true;
   @Input() fullscreen = true;
@@ -57,7 +57,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['imagens'] && this.isImagensPresentes()) {
+    if (changes['images'] && this.isImagensPresentes()) {
       this.inicializarVariaveisInput();
       this.inicializarImageViewer();
       setTimeout(() => {
@@ -68,8 +68,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
 
   isImagensPresentes() {
-    return this.imagens
-      && this.imagens.length > 0;
+    return this.images
+      && this.images.length > 0;
   }
 
   inicializarVariaveisInput() {
@@ -78,7 +78,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
   inicializarImageViewer() {
     this.indexImagemAtual = 1;
-    this.totalImagens = this.imagens.length;
+    this.totalImagens = this.images.length;
     this.wrapper = $(`#${this.idContainer}`);
     this.curSpan = this.wrapper.find('.current');
     this.viewer = ImageViewer(this.wrapper.find('.image-container'));
@@ -254,7 +254,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   private getImagemAtual() {
-    return this.imagens[this.indexImagemAtual - 1];
+    return this.images[this.indexImagemAtual - 1];
   }
 
   base64ToArrayBuffer(data) {

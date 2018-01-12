@@ -39,7 +39,7 @@ var ImageViewerComponent = (function () {
     };
     ImageViewerComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
-        if (changes['imagens'] && this.isImagensPresentes()) {
+        if (changes['images'] && this.isImagensPresentes()) {
             this.inicializarVariaveisInput();
             this.inicializarImageViewer();
             setTimeout(function () {
@@ -48,15 +48,15 @@ var ImageViewerComponent = (function () {
         }
     };
     ImageViewerComponent.prototype.isImagensPresentes = function () {
-        return this.imagens
-            && this.imagens.length > 0;
+        return this.images
+            && this.images.length > 0;
     };
     ImageViewerComponent.prototype.inicializarVariaveisInput = function () {
         this.mostrarZoom = true;
     };
     ImageViewerComponent.prototype.inicializarImageViewer = function () {
         this.indexImagemAtual = 1;
-        this.totalImagens = this.imagens.length;
+        this.totalImagens = this.images.length;
         this.wrapper = $("#" + this.idContainer);
         this.curSpan = this.wrapper.find('.current');
         this.viewer = ImageViewer(this.wrapper.find('.image-container'));
@@ -204,7 +204,7 @@ var ImageViewerComponent = (function () {
         return window.URL.createObjectURL(newBlob);
     };
     ImageViewerComponent.prototype.getImagemAtual = function () {
-        return this.imagens[this.indexImagemAtual - 1];
+        return this.images[this.indexImagemAtual - 1];
     };
     ImageViewerComponent.prototype.base64ToArrayBuffer = function (data) {
         var binaryString = window.atob(data);
@@ -221,7 +221,7 @@ var ImageViewerComponent = (function () {
     ], ImageViewerComponent.prototype, "idContainer");
     __decorate([
         core_1.Input()
-    ], ImageViewerComponent.prototype, "imagens");
+    ], ImageViewerComponent.prototype, "images");
     __decorate([
         core_1.Input()
     ], ImageViewerComponent.prototype, "rotate");
