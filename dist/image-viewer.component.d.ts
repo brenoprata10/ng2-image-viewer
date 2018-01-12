@@ -9,7 +9,7 @@ export declare class ImageViewerComponent implements OnChanges, OnInit, AfterVie
     ROTACAO_PADRAO_GRAUS: number;
     TOTAL_ROTACAO_GRAUS_VERTICAL: number;
     idContainer: any;
-    imagens: any[];
+    images: any[];
     rotate: boolean;
     download: boolean;
     fullscreen: boolean;

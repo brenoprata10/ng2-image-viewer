@@ -443,7 +443,7 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.decorators = [
         { type: core.Component, args: [{
                     selector: 'app-image-viewer',
-                    template: "<div id=\"{{idContainer}}\" class=\"image-gallery-2\"> <div class=\"image-container\"></div> <div class=\"inline-icon\"> <i class=\"material-icons footer-icon\" (click)=\"rotacionarDireita()\" *ngIf=\"rotate\">rotate_right</i> <i class=\"material-icons footer-icon\" (click)=\"rotacionarEsquerda()\" *ngIf=\"rotate\">rotate_left</i> <i class=\"material-icons footer-icon\" (click)=\"resetarZoom()\" *ngIf=\"mostrarZoom\">fullscreen_exit</i> <i class=\"material-icons footer-icon\" (click)=\"mostrarFullscreen()\"  *ngIf=\"fullscreen\">fullscreen</i> <a href=\"{{stringDownloadImagem}}\" download=\"Imagem {{indexImagemAtual}}.png\" *ngIf=\"download\"> <i class=\"material-icons footer-icon\">file_download</i> </a> </div> <img src=\"left.svg\" class=\"prev\" (click)=\"imagemAnterior()\"/> <img src=\"right.svg\" class=\"next\" (click)=\"proximaImagem()\"/> <div class=\"footer-info\"> <span class=\"current\"></span>/<span class=\"total\"></span> </div> </div> ",
+                    template: "<div id=\"{{idContainer}}\" class=\"image-gallery-2\"> <div class=\"image-container\"></div> <div class=\"inline-icon\"> <i class=\"material-icons footer-icon\" (click)=\"rotacionarDireita()\" *ngIf=\"rotate\">rotate_right</i> <i class=\"material-icons footer-icon\" (click)=\"rotacionarEsquerda()\" *ngIf=\"rotate\">rotate_left</i> <i class=\"material-icons footer-icon\" (click)=\"resetarZoom()\" *ngIf=\"mostrarZoom\">fullscreen_exit</i> <i class=\"material-icons footer-icon\" (click)=\"mostrarFullscreen()\"  *ngIf=\"fullscreen\">fullscreen</i> <a href=\"{{stringDownloadImagem}}\" download=\"Imagem {{indexImagemAtual}}.png\" *ngIf=\"download\"> <i class=\"material-icons footer-icon\">file_download</i> </a> </div> <img src=\"assets/left.svg\" class=\"prev\" (click)=\"imagemAnterior()\"/> <img src=\"assets/right.svg\" class=\"next\" (click)=\"proximaImagem()\"/> <div class=\"footer-info\"> <span class=\"current\"></span>/<span class=\"total\"></span> </div> </div> ",
                     styles: [".footer-icon { font-size: xx-large; } "]
                 },] },
     ];
@@ -451,7 +451,7 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.ctorParameters = function () { return []; };
     ImageViewerComponent.propDecorators = {
         "idContainer": [{ type: core.Input },],
-        "imagens": [{ type: core.Input },],
+        "images": [{ type: core.Input },],
         "rotate": [{ type: core.Input },],
         "download": [{ type: core.Input },],
         "fullscreen": [{ type: core.Input },],
