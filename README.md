@@ -35,15 +35,15 @@
 <h3>Showcase:</h3>
 <div style="display:flex; justify-content: space-around; width:100%; flex-wrap: wrap">
 <h5>Default design</h5>
-<img style="width:100%" src="https://lh6.googleusercontent.com/uveA_4_QteEG9_IXzmT-kbRmZa1Eku19odD7PJcPnInKluX_7Z0OkdPrBlvsm-9qKdjIcAhkn9RXyJK5pJcD=w1280-h800-rw">
+![captura de tela 2018-01-12 as 23 19 31](https://user-images.githubusercontent.com/26099427/34901505-3eaa24d8-f7f2-11e7-8afe-306c59479c83.png)
 <h5>Smart rotation</h5>
-<img style="width:100%" src="https://lh3.googleusercontent.com/7NEEDqHeYv1xvW0ws5ce6ByG59-Ek6XjHgc2ph6_etLbsNXhCFVUm_bQsYZnUg3X-9xCTOWhMnL3hlhw0fM3=w1280-h761-rw">
+![captura de tela 2018-01-12 as 23 19 58](https://user-images.githubusercontent.com/26099427/34901506-3ecf2e36-f7f2-11e7-8e15-beb55eea3cb1.png)
 <h5>80% zoom in</h5>
-<img style="width:100%" src="https://lh4.googleusercontent.com/wEUYbFdOYuA85w_tOJAXsoa_gBJmNNm_AQ3T0Uair3yfNgXtmRvqeOtOZDxAyMvy4qzXLfJsgI_XQ2mVUeKn=w1280-h800-rw">
+![captura de tela 2018-01-12 as 23 20 17](https://user-images.githubusercontent.com/26099427/34901507-3ef1fa88-f7f2-11e7-9488-9941794f6eb7.png)
 <h5>Fullscreen image</h5>
-<img style="width:100%" src="https://lh4.googleusercontent.com/uLILfIwJs14wOU662blmYe-fVv7apJ-K-CdaBzweXWvb9P5gLcd6k2_7op44TpL5dVTKUtq1b-IUWQIcbsYT=w1280-h800-rw">
+![captura de tela 2018-01-12 as 23 20 24](https://user-images.githubusercontent.com/26099427/34901508-3f15cc1a-f7f2-11e7-9f09-953bbca7b852.png)
 <h5>PDF</h5>
-![alt text](https://lh4.googleusercontent.com/4VfS6tsrMFuurCX6tRSmvqgJ36Kkldozm79Hh7RRDo3zqL32hK_Aez8nqzfRRMjh3pT-zcNxYpVt2kDvoNzp=w1280-h800-rw)
+![captura de tela 2018-01-12 as 23 36 45](https://user-images.githubusercontent.com/26099427/34901509-3f3e5cf2-f7f2-11e7-89ed-fdf55ba9546d.png)
 </div>
 <h3>How to use it:</h3>
 <section>
