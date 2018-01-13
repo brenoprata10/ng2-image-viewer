@@ -258,6 +258,8 @@
   height: 32px;
   margin-top: -66px;
   top: 50%;
+  font-size: xx-large;
+  color: #757575;
 }
 .image-gallery-2 .prev {
   cursor: pointer;
@@ -288,7 +290,6 @@
   text-align: center;
   color: white;
   border-top: 1px solid #FFF;
-  background-color: #0176bd;
   display:flex;
   justify-content: center;
 }
@@ -320,7 +321,6 @@
   display: flex;
   justify-content: flex-end;
   position: relative;
-  background-color: #0176bd;
   float: right;
   padding-left: 5px;
 

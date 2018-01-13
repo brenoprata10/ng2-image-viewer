@@ -21,6 +21,7 @@ var ImageViewerComponent = (function () {
         this.download = true;
         this.fullscreen = true;
         this.loadOnInit = false;
+        this.primaryColor = '#0176bd';
     }
     ImageViewerComponent.prototype.ngOnInit = function () {
         if (this.loadOnInit) {
@@ -234,6 +235,9 @@ var ImageViewerComponent = (function () {
     __decorate([
         core_1.Input()
     ], ImageViewerComponent.prototype, "loadOnInit");
+    __decorate([
+        core_1.Input()
+    ], ImageViewerComponent.prototype, "primaryColor");
     ImageViewerComponent = __decorate([
         core_1.Component({
             selector: 'app-image-viewer',

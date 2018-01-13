@@ -28,6 +28,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() download = true;
   @Input() fullscreen = true;
   @Input() loadOnInit = false;
+  @Input() primaryColor = '#0176bd';
 
   viewer;
   wrapper;

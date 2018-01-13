@@ -151,6 +151,10 @@ gulp.task('copy:build', function () {
  * 8. Copy package.json from /src to /dist
  */
 gulp.task('copy:manifest', function () {
+    gulp.src([`${srcFolder}/imageviewer.js`])
+        .pipe(gulp.dest(distFolder))
+    gulp.src([`${srcFolder}/imageviewer.scss`])
+        .pipe(gulp.dest(distFolder))
   return gulp.src([`${srcFolder}/package.json`])
     .pipe(gulp.dest(distFolder));
 });
