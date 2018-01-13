@@ -43,7 +43,7 @@
 <h5>Fullscreen image</h5>
 <img style="width:100%" src="https://lh4.googleusercontent.com/uLILfIwJs14wOU662blmYe-fVv7apJ-K-CdaBzweXWvb9P5gLcd6k2_7op44TpL5dVTKUtq1b-IUWQIcbsYT=w1280-h800-rw">
 <h5>PDF</h5>
-<img style="width:100%" src="https://lh4.googleusercontent.com/4VfS6tsrMFuurCX6tRSmvqgJ36Kkldozm79Hh7RRDo3zqL32hK_Aez8nqzfRRMjh3pT-zcNxYpVt2kDvoNzp=w1280-h800-rw">
+![alt text](https://lh4.googleusercontent.com/4VfS6tsrMFuurCX6tRSmvqgJ36Kkldozm79Hh7RRDo3zqL32hK_Aez8nqzfRRMjh3pT-zcNxYpVt2kDvoNzp=w1280-h800-rw)
 </div>
 <h3>How to use it:</h3>
 <section>
