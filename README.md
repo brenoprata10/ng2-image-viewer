@@ -218,10 +218,14 @@ To lint all `*.ts` files:
 $ npm run lint
 ```
 
-<h3>Donate:</h3>
+## Donate:
 <section>
 
 <p>You can donate on my Patreon! (Any value would be more than welcomed!)</p>
+
+<p>
+<a href="https://www.patreon.com/brenoprata">My Patreon o/</a>
+</p>
 
 </section>
 
