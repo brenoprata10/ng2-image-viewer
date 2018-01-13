@@ -148,9 +148,7 @@ To install this library, run:
 $ npm install ng2-image-viewer --save
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
+## Consuming the library
 
 ```bash
 $ npm install ng2-image-viewer
