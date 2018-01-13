@@ -61,6 +61,13 @@
             <td align="justify">It is the array containing the base64 data, the component differs the images and the PDF files, so don't worry.</td>
         </tr>
         <tr>
+            <td align="center">defaultDownloadName</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Image'</td>
+            <td align="justify">It is the default name used on the file to be downloaded, Ex: Image 1, Image 2</td>
+        </tr>
+        <tr>
             <td align="center">rotate</td>
             <td align="center">boolean</td>
             <td align="center"></td>
@@ -82,11 +89,39 @@
             <td align="justify">It is the boolean that renders the fullscreen button</td>
         </tr>
         <tr>
+            <td align="center">showOptions</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that options panel at the top right corner</td>
+        </tr>
+        <tr>
             <td align="center">loadOnInit</td>
             <td align="center">boolean</td>
             <td align="center"></td>
             <td align="center">false</td>
             <td align="justify">It is the boolean that lets you choose if you want to load the component on the OnInit event or on the OnChanges event, It was created because i faced some trouble with the primeNG tab using the change event.</td>
+        </tr>
+        <tr>
+            <td align="center">primaryColor</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'#0176bd'</td>
+            <td align="justify">It is the background-color used on the footer and on the options panel</td>
+        </tr>
+        <tr>
+            <td align="center">buttonsColor</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'white'</td>
+            <td align="justify">It is the color used on the buttons on the options panel</td>
+        </tr>
+        <tr>
+            <td align="center">buttonsHover</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'#333333'</td>
+            <td align="justify">It is the color used on the hover event, when the button receive the mouse pointer</td>
         </tr>
         </tbody>
     </table>

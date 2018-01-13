@@ -323,14 +323,6 @@
   position: relative;
   float: right;
   padding-left: 5px;
-
-  i {
-    color: white !important;
-
-    &:hover {
-      color: #feca37 !important;
-    }
-  }
 }
 
 .inline-pdf {
@@ -361,8 +353,6 @@
 
 .pdf-button-active {
   width: 258px;
-  background-color: #0176bd;
-  color: white;
   text-align: center;
   height: 57px;
   line-height: 56px;
@@ -370,7 +360,6 @@
   -webkit-transition: 0.3s ease-in-out;
 
   &:hover {
-    background-color: #333333;
     transition: 0.3s ease-in-out;
     -webkit-transition: 0.3s ease-in-out;
   }

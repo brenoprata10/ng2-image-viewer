@@ -1,17 +1,19 @@
 <div id="{{idContainer}}" class="image-gallery-2">
   <div class="image-container"></div>
-  <div class="inline-icon" style="background-color: {{primaryColor}} !important;">
+  <div class="inline-icon" *ngIf="showOptions">
     <i class="material-icons footer-icon" (click)="rotacionarDireita()" *ngIf="rotate">rotate_right</i>
     <i class="material-icons footer-icon" (click)="rotacionarEsquerda()" *ngIf="rotate">rotate_left</i>
     <i class="material-icons footer-icon" (click)="resetarZoom()" *ngIf="mostrarZoom">fullscreen_exit</i>
     <i class="material-icons footer-icon" (click)="mostrarFullscreen()"  *ngIf="fullscreen">fullscreen</i>
-    <a href="{{stringDownloadImagem}}" download="Image {{indexImagemAtual}}.png" *ngIf="download">
-      <i class="material-icons">file_download</i>
+    <a href="{{stringDownloadImagem}}"
+       download="{{defaultDownloadName}} {{indexImagemAtual}}.png"
+       *ngIf="download">
+      <i class="material-icons footer-icon">file_download</i>
     </a>
   </div>
   <i class="material-icons prev" (click)="imagemAnterior()">keyboard_arrow_left</i>
   <i class="material-icons next" (click)="proximaImagem()">keyboard_arrow_right</i>
-  <div class="footer-info" style="background-color: {{primaryColor}} !important;">
+  <div class="footer-info">
     <span class="current"></span>/<span class="total"></span>
   </div>
 </div>

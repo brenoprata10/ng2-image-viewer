@@ -21,7 +21,11 @@ var ImageViewerComponent = (function () {
         this.download = true;
         this.fullscreen = true;
         this.loadOnInit = false;
+        this.showOptions = true;
         this.primaryColor = '#0176bd';
+        this.buttonsColor = 'white';
+        this.buttonsHover = '#333333';
+        this.defaultDownloadName = 'Image';
     }
     ImageViewerComponent.prototype.ngOnInit = function () {
         if (this.loadOnInit) {
@@ -31,6 +35,12 @@ var ImageViewerComponent = (function () {
     };
     ImageViewerComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
+        $('.inline-icon').css('background-color', this.primaryColor);
+        $('.footer-info').css('background-color', this.primaryColor);
+        $('.footer-icon').css('color', this.buttonsColor);
+        $('.footer-icon').hover(function () {
+            $(this).css('color', this.buttonsHover);
+        });
         if (this.loadOnInit) {
             this.inicializarImageViewer();
             setTimeout(function () {
@@ -237,7 +247,19 @@ var ImageViewerComponent = (function () {
     ], ImageViewerComponent.prototype, "loadOnInit");
     __decorate([
         core_1.Input()
+    ], ImageViewerComponent.prototype, "showOptions");
+    __decorate([
+        core_1.Input()
     ], ImageViewerComponent.prototype, "primaryColor");
+    __decorate([
+        core_1.Input()
+    ], ImageViewerComponent.prototype, "buttonsColor");
+    __decorate([
+        core_1.Input()
+    ], ImageViewerComponent.prototype, "buttonsHover");
+    __decorate([
+        core_1.Input()
+    ], ImageViewerComponent.prototype, "defaultDownloadName");
     ImageViewerComponent = __decorate([
         core_1.Component({
             selector: 'app-image-viewer',

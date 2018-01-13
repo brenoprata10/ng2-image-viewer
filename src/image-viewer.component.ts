@@ -28,7 +28,11 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() download = true;
   @Input() fullscreen = true;
   @Input() loadOnInit = false;
+  @Input() showOptions = true;
   @Input() primaryColor = '#0176bd';
+  @Input() buttonsColor = 'white';
+  @Input() buttonsHover = '#333333';
+  @Input() defaultDownloadName = 'Image';
 
   viewer;
   wrapper;
@@ -48,6 +52,12 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+      $('.inline-icon').css('background-color', this.primaryColor);
+      $('.footer-info').css('background-color', this.primaryColor);
+      $('.footer-icon').css('color', this.buttonsColor);
+      $('.footer-icon').hover(function(){
+          $(this).css('color', this.buttonsHover);
+      });
     if (this.loadOnInit) {
       this.inicializarImageViewer();
       setTimeout(() => {
