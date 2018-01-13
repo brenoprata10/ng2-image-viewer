@@ -1,6 +1,6 @@
 {
   "name": "ng2-image-viewer",
-  "version": "0.1.9",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/brenoprata10/ng2-image-viewer"
@@ -10,7 +10,12 @@
     "email": "brenoprata10@gmail.com"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "image",
+    "viewer",
+    "angular 4",
+    "pdf",
+    "pdf viewer"
   ],
   "license": "MIT",
   "bugs": {
