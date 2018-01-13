@@ -35,7 +35,7 @@
 <h3>Showcase:</h3>
 <div style="display:flex; justify-content: space-around; width:100%; flex-wrap: wrap">
 <h5>Default design</h5>
-![alt tag](https://user-images.githubusercontent.com/26099427/34901505-3eaa24d8-f7f2-11e7-8afe-306c59479c83.png)
+![alt tag](http://user-images.githubusercontent.com/26099427/34901505-3eaa24d8-f7f2-11e7-8afe-306c59479c83.png)
 <h5>Smart rotation</h5>
 ![captura de tela 2018-01-12 as 23 19 58](https://user-images.githubusercontent.com/26099427/34901506-3ecf2e36-f7f2-11e7-8e15-beb55eea3cb1.png)
 <h5>80% zoom in</h5>
