@@ -20,33 +20,37 @@ var ImageViewerComponent = (function () {
         this.rotate = true;
         this.download = true;
         this.fullscreen = true;
+        this.resetZoom = true;
         this.loadOnInit = false;
         this.showOptions = true;
         this.primaryColor = '#0176bd';
         this.buttonsColor = 'white';
         this.buttonsHover = '#333333';
         this.defaultDownloadName = 'Image';
+        this.mostrarPainelOpcoes = true;
     }
     ImageViewerComponent.prototype.ngOnInit = function () {
         if (this.loadOnInit) {
             this.isImagensPresentes();
-            this.inicializarVariaveisInput();
         }
     };
     ImageViewerComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        $('.inline-icon').css('background-color', this.primaryColor);
-        $('.footer-info').css('background-color', this.primaryColor);
-        $('.footer-icon').css('color', this.buttonsColor);
-        $('.footer-icon').hover(function () {
-            $(this).css('color', this.buttonsHover);
-        });
+        this.inicializarCores();
         if (this.loadOnInit) {
             this.inicializarImageViewer();
             setTimeout(function () {
                 _this.showImage();
             }, 1000);
         }
+    };
+    ImageViewerComponent.prototype.inicializarCores = function () {
+        $('.inline-icon').css('background-color', this.primaryColor);
+        $('.footer-info').css('background-color', this.primaryColor);
+        $('.footer-icon').css('color', this.buttonsColor);
+        $('.footer-icon').hover(function () {
+            $(this).css('color', this.buttonsHover);
+        });
     };
     ImageViewerComponent.prototype.ngOnChanges = function (changes) {
         this.imagesChange(changes);
@@ -56,13 +60,14 @@ var ImageViewerComponent = (function () {
         this.defaultDownloadNameChange(changes);
     };
     ImageViewerComponent.prototype.primaryColorChange = function (changes) {
-        if (changes['primaryColor']) {
+        if (changes['primaryColor'] || changes['showOptions']) {
             $('.inline-icon').css('background-color', this.primaryColor);
             $('.footer-info').css('background-color', this.primaryColor);
         }
     };
     ImageViewerComponent.prototype.buttonsColorChange = function (changes) {
-        if (changes['buttonsColor']) {
+        if (changes['buttonsColor'] || changes['rotate'] || changes['download']
+            || changes['fullscreen']) {
             $('.footer-icon').css('color', this.buttonsColor);
         }
     };
@@ -81,7 +86,6 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.prototype.imagesChange = function (changes) {
         var _this = this;
         if (changes['images'] && this.isImagensPresentes()) {
-            this.inicializarVariaveisInput();
             this.inicializarImageViewer();
             setTimeout(function () {
                 _this.showImage();
@@ -91,9 +95,6 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.prototype.isImagensPresentes = function () {
         return this.images
             && this.images.length > 0;
-    };
-    ImageViewerComponent.prototype.inicializarVariaveisInput = function () {
-        this.mostrarZoom = true;
     };
     ImageViewerComponent.prototype.inicializarImageViewer = function () {
         this.indexImagemAtual = 1;
@@ -116,6 +117,7 @@ var ImageViewerComponent = (function () {
         }
         this.viewer.load(imgObj, imgObj);
         this.curSpan.html(this.indexImagemAtual);
+        this.inicializarCores();
     };
     ImageViewerComponent.prototype.carregarViewerPDF = function () {
         this.esconderBotoesImageViewer();
@@ -131,20 +133,13 @@ var ImageViewerComponent = (function () {
         return { widthIframe: widthIframe, heightIframe: heightIframe };
     };
     ImageViewerComponent.prototype.esconderBotoesImageViewer = function () {
-        this.rotate = false;
-        this.download = false;
-        this.fullscreen = false;
-        this.mostrarZoom = false;
         $('.iv-loader').css('visibility', 'hidden');
+        $('.inline-icon').css('visibility', 'hidden');
     };
     ImageViewerComponent.prototype.isPDF = function () {
         return this.getImagemAtual().startsWith('JVBE') || this.getImagemAtual().startsWith('0M8R');
     };
     ImageViewerComponent.prototype.prepararTrocaImagem = function () {
-        this.rotate = true;
-        this.download = true;
-        this.fullscreen = true;
-        this.mostrarZoom = true;
         this.rotacaoImagemAtual = 0;
         this.limparCacheElementos();
     };
@@ -152,6 +147,7 @@ var ImageViewerComponent = (function () {
         $('.iframeViewer').remove();
         $('.iv-large-image').remove();
         $('.iv-loader').css('visibility', 'auto');
+        $('.inline-icon').css('visibility', 'inherit');
     };
     ImageViewerComponent.prototype.getPdfBase64 = function () {
         return "" + this.BASE_64_PDF + this.getImagemAtual();
@@ -185,27 +181,33 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.prototype.resetarZoom = function () {
         this.viewer.zoom(100);
     };
-    ImageViewerComponent.prototype.atualizarRotacao = function () {
+    ImageViewerComponent.prototype.atualizarRotacao = function (isAnimacao) {
+        if (isAnimacao === void 0) { isAnimacao = true; }
         var scale = '';
         if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
             scale = "scale(0.46)";
         }
         var novaRotacao = "rotate(" + this.rotacaoImagemAtual + "deg)";
-        this.carregarImagem(novaRotacao, scale);
+        this.carregarImagem(novaRotacao, scale, isAnimacao);
     };
     ImageViewerComponent.prototype.isImagemSobrepondoNaVertical = function () {
         var margemErro = 5;
         return parseFloat($("#" + this.idContainer).css('height')) < parseFloat($('.iv-large-image').css('width')) + margemErro;
     };
-    ImageViewerComponent.prototype.carregarImagem = function (novaRotacao, scale) {
+    ImageViewerComponent.prototype.carregarImagem = function (novaRotacao, scale, isAnimacao) {
         var _this = this;
-        this.adicionarAnimacao('.iv-snap-image');
-        this.adicionarAnimacao('.iv-large-image');
+        if (isAnimacao === void 0) { isAnimacao = true; }
+        if (isAnimacao) {
+            this.adicionarAnimacao('.iv-snap-image');
+            this.adicionarAnimacao('.iv-large-image');
+        }
         this.adicionarRotacao('.iv-snap-image', novaRotacao, scale);
         this.adicionarRotacao('.iv-large-image', novaRotacao, scale);
         setTimeout(function () {
-            _this.retirarAnimacao('.iv-snap-image');
-            _this.retirarAnimacao('.iv-large-image');
+            if (isAnimacao) {
+                _this.retirarAnimacao('.iv-snap-image');
+                _this.retirarAnimacao('.iv-large-image');
+            }
         }, 501);
     };
     ImageViewerComponent.prototype.retirarAnimacao = function (componente) {
@@ -221,7 +223,7 @@ var ImageViewerComponent = (function () {
         this.viewerFullscreen = ImageViewer();
         var imgSrc = this.BASE_64_PNG + this.getImagemAtual();
         this.viewerFullscreen.show(imgSrc, imgSrc);
-        this.atualizarRotacao();
+        this.atualizarRotacao(false);
     };
     ImageViewerComponent.prototype.converterPDFBase64ParaBlob = function () {
         var arrBuffer = this.base64ToArrayBuffer(this.getImagemAtual());
@@ -260,6 +262,9 @@ var ImageViewerComponent = (function () {
     __decorate([
         core_1.Input()
     ], ImageViewerComponent.prototype, "fullscreen");
+    __decorate([
+        core_1.Input()
+    ], ImageViewerComponent.prototype, "resetZoom");
     __decorate([
         core_1.Input()
     ], ImageViewerComponent.prototype, "loadOnInit");

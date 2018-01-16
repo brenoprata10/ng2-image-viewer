@@ -27,6 +27,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() rotate = true;
     @Input() download = true;
     @Input() fullscreen = true;
+    @Input() resetZoom = true;
     @Input() loadOnInit = false;
     @Input() showOptions = true;
     @Input() primaryColor = '#0176bd';
@@ -38,27 +39,21 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     wrapper;
     curSpan;
     viewerFullscreen;
-    mostrarZoom: boolean;
     totalImagens: number;
     indexImagemAtual: number;
     rotacaoImagemAtual: number;
     stringDownloadImagem: string;
     isImagemVertical: boolean;
+    mostrarPainelOpcoes = true;
 
     ngOnInit() {
         if (this.loadOnInit) {
             this.isImagensPresentes();
-            this.inicializarVariaveisInput();
         }
     }
 
     ngAfterViewInit() {
-        $('.inline-icon').css('background-color', this.primaryColor);
-        $('.footer-info').css('background-color', this.primaryColor);
-        $('.footer-icon').css('color', this.buttonsColor);
-        $('.footer-icon').hover(function(){
-            $(this).css('color', this.buttonsHover);
-        });
+        this.inicializarCores();
         if (this.loadOnInit) {
             this.inicializarImageViewer();
             setTimeout(() => {
@@ -67,6 +62,14 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         }
     }
 
+    private inicializarCores() {
+        $('.inline-icon').css('background-color', this.primaryColor);
+        $('.footer-info').css('background-color', this.primaryColor);
+        $('.footer-icon').css('color', this.buttonsColor);
+        $('.footer-icon').hover(function () {
+            $(this).css('color', this.buttonsHover);
+        });
+    }
 
     ngOnChanges(changes: SimpleChanges) {
         this.imagesChange(changes);
@@ -77,14 +80,15 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     primaryColorChange(changes: SimpleChanges) {
-        if (changes['primaryColor']) {
+        if (changes['primaryColor'] || changes['showOptions']) {
             $('.inline-icon').css('background-color', this.primaryColor);
             $('.footer-info').css('background-color', this.primaryColor);
         }
     }
 
     buttonsColorChange(changes: SimpleChanges) {
-        if (changes['buttonsColor']) {
+        if (changes['buttonsColor'] || changes['rotate'] || changes['download']
+        || changes['fullscreen']) {
             $('.footer-icon').css('color', this.buttonsColor);
         }
     }
@@ -105,7 +109,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     imagesChange(changes: SimpleChanges) {
         if (changes['images'] && this.isImagensPresentes()) {
-            this.inicializarVariaveisInput();
             this.inicializarImageViewer();
             setTimeout(() => {
                 this.showImage();
@@ -116,10 +119,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     isImagensPresentes() {
         return this.images
             && this.images.length > 0;
-    }
-
-    inicializarVariaveisInput() {
-        this.mostrarZoom = true;
     }
 
     inicializarImageViewer() {
@@ -144,6 +143,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         }
         this.viewer.load(imgObj, imgObj);
         this.curSpan.html(this.indexImagemAtual);
+        this.inicializarCores();
     }
 
     carregarViewerPDF() {
@@ -166,11 +166,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     esconderBotoesImageViewer() {
-        this.rotate = false;
-        this.download = false;
-        this.fullscreen = false;
-        this.mostrarZoom = false;
         $('.iv-loader').css('visibility', 'hidden');
+        $('.inline-icon').css('visibility', 'hidden');
     }
 
     isPDF() {
@@ -178,10 +175,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     prepararTrocaImagem() {
-        this.rotate = true;
-        this.download = true;
-        this.fullscreen = true;
-        this.mostrarZoom = true;
         this.rotacaoImagemAtual = 0;
         this.limparCacheElementos();
     }
@@ -190,6 +183,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         $('.iframeViewer').remove();
         $('.iv-large-image').remove();
         $('.iv-loader').css('visibility', 'auto');
+        $('.inline-icon').css('visibility', 'inherit');
     }
 
     getPdfBase64(): string {
@@ -230,13 +224,13 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.viewer.zoom(100);
     }
 
-    atualizarRotacao() {
+    atualizarRotacao(isAnimacao = true) {
         let scale = '';
         if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
             scale = `scale(0.46)`;
         }
         const novaRotacao = `rotate(${this.rotacaoImagemAtual}deg)`;
-        this.carregarImagem(novaRotacao, scale);
+        this.carregarImagem(novaRotacao, scale, isAnimacao);
     }
 
     isImagemSobrepondoNaVertical() {
@@ -244,14 +238,18 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         return parseFloat($(`#${this.idContainer}`).css('height')) < parseFloat($('.iv-large-image').css('width')) + margemErro;
     }
 
-    carregarImagem(novaRotacao: string, scale: string) {
-        this.adicionarAnimacao('.iv-snap-image');
-        this.adicionarAnimacao('.iv-large-image');
+    carregarImagem(novaRotacao: string, scale: string, isAnimacao = true) {
+        if (isAnimacao) {
+            this.adicionarAnimacao('.iv-snap-image');
+            this.adicionarAnimacao('.iv-large-image');
+        }
         this.adicionarRotacao('.iv-snap-image', novaRotacao, scale);
         this.adicionarRotacao('.iv-large-image', novaRotacao, scale);
         setTimeout(() => {
-            this.retirarAnimacao('.iv-snap-image');
-            this.retirarAnimacao('.iv-large-image');
+            if (isAnimacao) {
+                this.retirarAnimacao('.iv-snap-image');
+                this.retirarAnimacao('.iv-large-image');
+            }
         }, 501);
     }
 
@@ -271,7 +269,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.viewerFullscreen = ImageViewer();
         const imgSrc = this.BASE_64_PNG + this.getImagemAtual();
         this.viewerFullscreen.show(imgSrc, imgSrc);
-        this.atualizarRotacao();
+        this.atualizarRotacao(false);
     }
 
     converterPDFBase64ParaBlob() {
