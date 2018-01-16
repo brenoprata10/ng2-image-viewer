@@ -49,6 +49,36 @@ var ImageViewerComponent = (function () {
         }
     };
     ImageViewerComponent.prototype.ngOnChanges = function (changes) {
+        this.imagesChange(changes);
+        this.primaryColorChange(changes);
+        this.buttonsColorChange(changes);
+        this.buttonsHoverChange(changes);
+        this.defaultDownloadNameChange(changes);
+    };
+    ImageViewerComponent.prototype.primaryColorChange = function (changes) {
+        if (changes['primaryColor']) {
+            $('.inline-icon').css('background-color', this.primaryColor);
+            $('.footer-info').css('background-color', this.primaryColor);
+        }
+    };
+    ImageViewerComponent.prototype.buttonsColorChange = function (changes) {
+        if (changes['buttonsColor']) {
+            $('.footer-icon').css('color', this.buttonsColor);
+        }
+    };
+    ImageViewerComponent.prototype.buttonsHoverChange = function (changes) {
+        if (changes['buttonsHover']) {
+            $('.footer-icon').hover(function () {
+                $(this).css('color', this.buttonsHover);
+            });
+        }
+    };
+    ImageViewerComponent.prototype.defaultDownloadNameChange = function (changes) {
+        if (changes['defaultDownloadName']) {
+            this.defaultDownloadName = this.defaultDownloadName;
+        }
+    };
+    ImageViewerComponent.prototype.imagesChange = function (changes) {
         var _this = this;
         if (changes['images'] && this.isImagensPresentes()) {
             this.inicializarVariaveisInput();
@@ -142,22 +172,14 @@ var ImageViewerComponent = (function () {
     };
     ImageViewerComponent.prototype.rotacionarDireita = function () {
         this.resetarZoom();
-        if (this.rotacaoImagemAtual === 360) {
-            this.rotacaoImagemAtual = this.ROTACAO_PADRAO_GRAUS;
-        }
-        else {
-            this.rotacaoImagemAtual += this.ROTACAO_PADRAO_GRAUS;
-        }
+        this.rotacaoImagemAtual += this.ROTACAO_PADRAO_GRAUS;
+        this.isImagemVertical = !this.isImagemVertical;
         this.atualizarRotacao();
     };
     ImageViewerComponent.prototype.rotacionarEsquerda = function () {
         this.resetarZoom();
-        if (this.rotacaoImagemAtual === 0) {
-            this.rotacaoImagemAtual = this.TOTAL_ROTACAO_GRAUS_VERTICAL;
-        }
-        else {
-            this.rotacaoImagemAtual -= this.ROTACAO_PADRAO_GRAUS;
-        }
+        this.rotacaoImagemAtual -= this.ROTACAO_PADRAO_GRAUS;
+        this.isImagemVertical = !this.isImagemVertical;
         this.atualizarRotacao();
     };
     ImageViewerComponent.prototype.resetarZoom = function () {
@@ -165,7 +187,7 @@ var ImageViewerComponent = (function () {
     };
     ImageViewerComponent.prototype.atualizarRotacao = function () {
         var scale = '';
-        if (this.isImagemRotacaoVertical() && this.isImagemSobrepondoNaVertical()) {
+        if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
             scale = "scale(0.46)";
         }
         var novaRotacao = "rotate(" + this.rotacaoImagemAtual + "deg)";
@@ -174,10 +196,6 @@ var ImageViewerComponent = (function () {
     ImageViewerComponent.prototype.isImagemSobrepondoNaVertical = function () {
         var margemErro = 5;
         return parseFloat($("#" + this.idContainer).css('height')) < parseFloat($('.iv-large-image').css('width')) + margemErro;
-    };
-    ImageViewerComponent.prototype.isImagemRotacaoVertical = function () {
-        return this.rotacaoImagemAtual === this.ROTACAO_PADRAO_GRAUS
-            || this.rotacaoImagemAtual === this.TOTAL_ROTACAO_GRAUS_VERTICAL;
     };
     ImageViewerComponent.prototype.carregarImagem = function (novaRotacao, scale) {
         var _this = this;

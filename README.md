@@ -32,19 +32,6 @@
         </li>
     </ul>
 </section>
-<h3>Showcase:</h3>
-<div style="display:flex; justify-content: space-around; width:100%; flex-wrap: wrap">
-<h5>Default design</h5>
-![alt text](http://user-images.githubusercontent.com/26099427/34901505-3eaa24d8-f7f2-11e7-8afe-306c59479c83.png)
-<h5>Smart rotation</h5>
-![alt text](https://user-images.githubusercontent.com/26099427/34901508-3f15cc1a-f7f2-11e7-9f09-953bbca7b852.png)
-<h5>80% zoom in</h5>
-![alt text](https://user-images.githubusercontent.com/26099427/34901507-3ef1fa88-f7f2-11e7-9488-9941794f6eb7.png)
-<h5>Fullscreen image</h5>
-![alt text](https://user-images.githubusercontent.com/26099427/34901506-3ecf2e36-f7f2-11e7-8e15-beb55eea3cb1.png)
-<h5>PDF</h5>
-![alt text](https://user-images.githubusercontent.com/26099427/34901509-3f3e5cf2-f7f2-11e7-89ed-fdf55ba9546d.png)
-</div>
 <h3>How to use it:</h3>
 <section>
     <p>The component already have some input references:</p>
