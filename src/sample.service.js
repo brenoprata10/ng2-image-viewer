@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
-var SampleService = (function () {
+var SampleService = /** @class */ (function () {
     function SampleService() {
     }
     SampleService = __decorate([

@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {setTimeout} from "timers";
 
 declare var $: any;
 declare var ImageViewer: any;
@@ -81,15 +82,19 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     primaryColorChange(changes: SimpleChanges) {
         if (changes['primaryColor'] || changes['showOptions']) {
-            $('.inline-icon').css('background-color', this.primaryColor);
-            $('.footer-info').css('background-color', this.primaryColor);
+            setTimeout(() => {
+                $('.inline-icon').css('background-color', this.primaryColor);
+                $('.footer-info').css('background-color', this.primaryColor);
+            }, 350);
         }
     }
 
     buttonsColorChange(changes: SimpleChanges) {
         if (changes['buttonsColor'] || changes['rotate'] || changes['download']
         || changes['fullscreen']) {
-            $('.footer-icon').css('color', this.buttonsColor);
+            setTimeout(() => {
+                $('.footer-icon').css('color', this.buttonsColor);
+            }, 350);
         }
     }
 

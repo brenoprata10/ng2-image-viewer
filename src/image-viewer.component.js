@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
+var timers_1 = require("timers");
 /**
  * @author Breno Prata - 22/12/2017
  */
-var ImageViewerComponent = (function () {
+var ImageViewerComponent = /** @class */ (function () {
     function ImageViewerComponent() {
         this.BASE_64_IMAGE = 'data:image/png;base64,';
         this.BASE_64_PNG = this.BASE_64_IMAGE + " ";
@@ -39,7 +40,7 @@ var ImageViewerComponent = (function () {
         this.inicializarCores();
         if (this.loadOnInit) {
             this.inicializarImageViewer();
-            setTimeout(function () {
+            timers_1.setTimeout(function () {
                 _this.showImage();
             }, 1000);
         }
@@ -60,15 +61,21 @@ var ImageViewerComponent = (function () {
         this.defaultDownloadNameChange(changes);
     };
     ImageViewerComponent.prototype.primaryColorChange = function (changes) {
+        var _this = this;
         if (changes['primaryColor'] || changes['showOptions']) {
-            $('.inline-icon').css('background-color', this.primaryColor);
-            $('.footer-info').css('background-color', this.primaryColor);
+            timers_1.setTimeout(function () {
+                $('.inline-icon').css('background-color', _this.primaryColor);
+                $('.footer-info').css('background-color', _this.primaryColor);
+            }, 350);
         }
     };
     ImageViewerComponent.prototype.buttonsColorChange = function (changes) {
+        var _this = this;
         if (changes['buttonsColor'] || changes['rotate'] || changes['download']
             || changes['fullscreen']) {
-            $('.footer-icon').css('color', this.buttonsColor);
+            timers_1.setTimeout(function () {
+                $('.footer-icon').css('color', _this.buttonsColor);
+            }, 350);
         }
     };
     ImageViewerComponent.prototype.buttonsHoverChange = function (changes) {
@@ -87,7 +94,7 @@ var ImageViewerComponent = (function () {
         var _this = this;
         if (changes['images'] && this.isImagensPresentes()) {
             this.inicializarImageViewer();
-            setTimeout(function () {
+            timers_1.setTimeout(function () {
                 _this.showImage();
             }, 1000);
         }
@@ -205,7 +212,7 @@ var ImageViewerComponent = (function () {
         }
         this.adicionarRotacao('.iv-snap-image', novaRotacao, scale);
         this.adicionarRotacao('.iv-large-image', novaRotacao, scale);
-        setTimeout(function () {
+        timers_1.setTimeout(function () {
             if (isAnimacao) {
                 _this.retirarAnimacao('.iv-snap-image');
                 _this.retirarAnimacao('.iv-large-image');

@@ -15,7 +15,7 @@ var sample_service_1 = require("./sample.service");
 var image_viewer_component_1 = require("./image-viewer.component");
 __export(require("./sample.service"));
 __export(require("./image-viewer.component"));
-var ImageViewerModule = (function () {
+var ImageViewerModule = /** @class */ (function () {
     function ImageViewerModule() {
     }
     ImageViewerModule_1 = ImageViewerModule;
