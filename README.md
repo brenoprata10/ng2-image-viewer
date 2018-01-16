@@ -21,6 +21,10 @@
         </li>
     </ul>
 </section>
+<h3>Demo:</h3>
+<section>
+<a href="https://brenoprata10.github.io/ng2-image-viewer/">https://brenoprata10.github.io/ng2-image-viewer/</a>
+</section>
 <h3>Requirements: </h3>
 <section>
     <ul>
