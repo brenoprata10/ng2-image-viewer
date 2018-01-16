@@ -75,6 +75,13 @@
             <td align="justify">It is the boolean that renders the rotate left and right buttons</td>
         </tr>
         <tr>
+            <td align="center">resetZoom</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that renders the resetZoom button</td>
+        </tr>
+        <tr>
             <td align="center">download</td>
             <td align="center">boolean</td>
             <td align="center"></td>

@@ -191,6 +191,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     proximaImagem() {
+        this.isImagemVertical = false;
         this.indexImagemAtual++;
         if (this.indexImagemAtual > this.totalImagens) {
             this.indexImagemAtual = 1;
@@ -199,6 +200,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     imagemAnterior() {
+        this.isImagemVertical = false;
         this.indexImagemAtual--;
         if (this.indexImagemAtual <= 0) {
             this.indexImagemAtual = this.totalImagens;

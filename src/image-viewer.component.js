@@ -153,6 +153,7 @@ var ImageViewerComponent = (function () {
         return "" + this.BASE_64_PDF + this.getImagemAtual();
     };
     ImageViewerComponent.prototype.proximaImagem = function () {
+        this.isImagemVertical = false;
         this.indexImagemAtual++;
         if (this.indexImagemAtual > this.totalImagens) {
             this.indexImagemAtual = 1;
@@ -160,6 +161,7 @@ var ImageViewerComponent = (function () {
         this.showImage();
     };
     ImageViewerComponent.prototype.imagemAnterior = function () {
+        this.isImagemVertical = false;
         this.indexImagemAtual--;
         if (this.indexImagemAtual <= 0) {
             this.indexImagemAtual = this.totalImagens;
