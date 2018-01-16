@@ -4131,9 +4131,9 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
-ng2-image-viewer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ng2-image-viewer/-/ng2-image-viewer-1.0.1.tgz#546cd4beb9533c2bd43b008f55b78166f9912559"
+ng2-image-viewer@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ng2-image-viewer/-/ng2-image-viewer-1.0.2.tgz#6e00ee3e1561804ac9ab2c64fa76c901a55ac203"
 
 ng2-materialize@^1.5.1:
   version "1.7.2"

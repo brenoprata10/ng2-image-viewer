@@ -16,3 +16,8 @@ html {
 nav {
   background-color: rgb(1, 118, 189) !important;
 }
+
+input {
+  width: 100%;
+  margin-top: 5px;
+}

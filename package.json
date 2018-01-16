@@ -24,7 +24,7 @@
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
     "mdi": "^2.0.46",
-    "ng2-image-viewer": "^1.0.1",
+    "ng2-image-viewer": "^1.0.2",
     "ng2-materialize": "^1.5.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

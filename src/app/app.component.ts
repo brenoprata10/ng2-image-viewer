@@ -11,25 +11,20 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class AppComponent implements OnInit {
   images = [];
   formGroup: FormGroup;
-  tste;
 
   ngOnInit() {
     this.formGroup = new FormGroup({
       'primaryColor': new FormControl('#0176bd'),
-      'buttonsColor': new FormControl('#333333'),
+      'buttonsColor': new FormControl('#ffffff'),
+      'buttonsHover': new FormControl('#0176bd'),
+      'download': new FormControl(true),
+      'fullscreen': new FormControl(true),
+      'rotate': new FormControl(true),
+      'options': new FormControl(true),
       'defaultDownloadName': new FormControl('Image')
     });
     this.images.push(BaseImage.IMAGE);
     this.images.push(BasePDF.PDF);
-  }
-
-  changePrimaryColor() {
-    $('.inline-icon').css('background-color', this.formGroup.get('primaryColor').value);
-    $('.footer-info').css('background-color', this.formGroup.get('primaryColor').value);
-  }
-
-  changeButtonsColor() {
-    $('.footer-icon').css('color', this.formGroup.get('buttonsColor').value);
   }
 
 }
