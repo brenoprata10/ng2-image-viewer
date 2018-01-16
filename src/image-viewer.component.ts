@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {setTimeout} from "timers";
 
 declare var $: any;
 declare var ImageViewer: any;
