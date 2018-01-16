@@ -8,6 +8,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "types": [
+      "jquery",
+      "materialize-css",
+      "ImageViewer"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
