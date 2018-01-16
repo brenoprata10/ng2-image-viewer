@@ -7,7 +7,7 @@
 <div class="container-image-viewer">
 
   <div class="row">
-    <app-image-viewer class="col s8"
+    <app-image-viewer class="col s12 m8"
                       [images]="images"
                       [idContainer]="'demo'"
                       [loadOnInit]="true"
@@ -21,7 +21,7 @@
                       [defaultDownloadName]="formGroup.get('defaultDownloadName').value">
 
     </app-image-viewer>
-    <form [formGroup]="formGroup" class="col s4 row">
+    <form [formGroup]="formGroup" class="col s12 m4 row">
       <mz-input-container class="col s4">
 
         <input mz-input mz-validation type="color"
@@ -32,11 +32,6 @@
         <input mz-input mz-validation type="color"
                formControlName="buttonsColor"
                [label]="'Buttons Color'">
-      </mz-input-container>
-      <mz-input-container class="col s4">
-        <input mz-input mz-validation type="color"
-               formControlName="buttonsHover"
-               [label]="'Hover Color'">
       </mz-input-container>
       <mz-input-container class="col s12 m12 l12">
         <input mz-input mz-validation type="text"
@@ -69,7 +64,6 @@
                formControlName="options"
                id="options"
                filledIn="true"
-               (click)="formGroup.get('primaryColor').reset()"
                [label]="'Show options.'">
       </mz-checkbox-container>
     </form>
