@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.container-image-viewer {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 50px;
+}
+
+.image-gallery-2 {
+  height: 500px !important;
+}
+
+nav {
+  background-color: rgb(1, 118, 189) !important;
+}
+
+input {
+  width: 100%;
+  margin-top: 5px;
+}
