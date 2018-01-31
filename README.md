@@ -21,6 +21,18 @@
         </li>
     </ul>
 </section>
+
+## Donate:
+<section>
+
+<p>You can donate on my Patreon! (Any value would be more than welcomed!)</p>
+
+<p>
+<a href="https://www.patreon.com/brenoprata">My Patreon o/</a>
+</p>
+
+</section>
+
 <h3>Demo:</h3>
 <section>
 <a href="https://brenoprata10.github.io/ng2-image-viewer/">https://brenoprata10.github.io/ng2-image-viewer/</a>
@@ -134,6 +146,20 @@
             <td align="center">'#333333'</td>
             <td align="justify">It is the color used on the hover event, when the button receive the mouse pointer</td>
         </tr>
+        <tr>
+            <td align="center">onNext</td>
+            <td align="center">EventEmitter</td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="justify">It is the event triggered when you change to next file, it emits the actual index of the array on the component</td>
+        </tr>
+        <tr>
+            <td align="center">onPrevious</td>
+            <td align="center">EventEmitter</td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="justify">It is the event triggered when you change to previous file, it emits the actual index of the array on the component</td>
+        </tr>
         </tbody>
     </table>
 </section>
@@ -148,11 +174,7 @@ $ npm install ng2-image-viewer --save
 
 ## Consuming the library
 
-```bash
-$ npm install ng2-image-viewer
-```
-
-and then from your Angular `AppModule`:
+And then from your Angular `AppModule`:
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -202,6 +224,13 @@ Once your library is imported, you can use its components, directives and pipes 
 [loadOnInit]="true"></app-image-viewer>
 ```
 
+## Changelog
+<h5>- 1.0.8:</h5>
+<ul>
+    <li>Added two event emitters(OnNext and OnPrevious)</li>
+    <li>Adjust on the smart scale when rotating</li>
+</ul>
+
 ## Development
 
 To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
@@ -215,17 +244,6 @@ To lint all `*.ts` files:
 ```bash
 $ npm run lint
 ```
-
-## Donate:
-<section>
-
-<p>You can donate on my Patreon! (Any value would be more than welcomed!)</p>
-
-<p>
-<a href="https://www.patreon.com/brenoprata">My Patreon o/</a>
-</p>
-
-</section>
 
 ## License
 

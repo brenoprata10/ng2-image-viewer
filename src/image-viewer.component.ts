@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 declare var $: any;
 declare var ImageViewer: any;
@@ -34,6 +34,9 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() buttonsColor = 'white';
     @Input() buttonsHover = '#333333';
     @Input() defaultDownloadName = 'Image';
+
+    @Output() onNext = new EventEmitter();
+    @Output() onPrevious = new EventEmitter();
 
     viewer;
     wrapper;
@@ -200,6 +203,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         if (this.indexImagemAtual > this.totalImagens) {
             this.indexImagemAtual = 1;
         }
+        this.onNext.emit(this.indexImagemAtual);
         this.showImage();
     }
 
@@ -209,6 +213,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         if (this.indexImagemAtual <= 0) {
             this.indexImagemAtual = this.totalImagens;
         }
+        this.onPrevious.emit(this.indexImagemAtual);
         this.showImage();
     }
 
@@ -233,10 +238,14 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     atualizarRotacao(isAnimacao = true) {
         let scale = '';
         if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
-            scale = `scale(0.46)`;
+            scale = `scale(${this.getScale()})`;
         }
         const novaRotacao = `rotate(${this.rotacaoImagemAtual}deg)`;
         this.carregarImagem(novaRotacao, scale, isAnimacao);
+    }
+
+    getScale() {
+        return (parseFloat($('.iv-large-image').css('width')) - (parseFloat($(`#${this.idContainer}`).css('height')))) * 2.3 / (parseFloat($(`#${this.idContainer}`).css('height')));
     }
 
     isImagemSobrepondoNaVertical() {
