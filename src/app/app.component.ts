@@ -21,10 +21,17 @@ export class AppComponent implements OnInit {
       'fullscreen': new FormControl(true),
       'rotate': new FormControl(true),
       'options': new FormControl(true),
-      'defaultDownloadName': new FormControl('Image')
+      'defaultDownloadName': new FormControl('Image'),
+      'alertWhenChange': new FormControl(false)
     });
     this.images.push(BaseImage.IMAGE);
     this.images.push(BasePDF.PDF);
+  }
+
+  alertWhenChange(event) {
+    if (this.formGroup.get('alertWhenChange').value) {
+      alert('You are on the image number: ' + event);
+    }
   }
 
 }

@@ -18,8 +18,9 @@
                       [fullscreen]="formGroup.get('fullscreen').value"
                       [rotate]="formGroup.get('rotate').value"
                       [showOptions]="formGroup.get('options').value"
-                      [defaultDownloadName]="formGroup.get('defaultDownloadName').value">
-
+                      [defaultDownloadName]="formGroup.get('defaultDownloadName').value"
+                      (onNext)="alertWhenChange($event)"
+                      (onPrevious)="alertWhenChange($event)">
     </app-image-viewer>
     <form [formGroup]="formGroup" class="col s12 m4 row">
       <mz-input-container class="col s4">
@@ -65,6 +66,13 @@
                id="options"
                filledIn="true"
                [label]="'Show options.'">
+      </mz-checkbox-container>
+      <mz-checkbox-container class="col s12 m12 l12">
+        <input mz-checkbox type="checkbox"
+               formControlName="alertWhenChange"
+               id="alertWhenChange"
+               filledIn="true"
+               [label]="'Alert when change image.'">
       </mz-checkbox-container>
     </form>
   </div>
