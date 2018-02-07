@@ -1,21 +1,26 @@
 <div id="{{idContainer}}" class="image-gallery-2">
     <div class="image-container"></div>
     <div class="inline-icon" *ngIf="showOptions">
-        <a (click)="rotacionarDireita()" *ngIf="rotate">
+        <a class="tooltip" (click)="rotacionarDireita()" *ngIf="rotate">
+            <span *ngIf="enableTooltip" class="tooltiptext">{{rotateRightTooltipLabel}}</span>
             <i class="material-icons footer-icon">rotate_right</i>
         </a>
-        <a (click)="rotacionarEsquerda()" *ngIf="rotate">
+        <a class="tooltip" (click)="rotacionarEsquerda()" *ngIf="rotate">
+            <span *ngIf="enableTooltip" class="tooltiptext">{{rotateLeftTooltipLabel}}</span>
             <i class="material-icons footer-icon">rotate_left</i>
         </a>
-        <a (click)="resetarZoom()" *ngIf="resetZoom">
+        <a class="tooltip" (click)="resetarZoom()" *ngIf="resetZoom">
+            <span *ngIf="enableTooltip" class="tooltiptext">{{resetZoomTooltipLabel}}</span>
             <i class="material-icons footer-icon">fullscreen_exit</i>
         </a>
-        <a (click)="mostrarFullscreen()"  *ngIf="fullscreen">
+        <a class="tooltip" (click)="mostrarFullscreen()"  *ngIf="fullscreen">
+            <span *ngIf="enableTooltip" class="tooltiptext">{{fullscreenTooltipLabel}}</span>
             <i class="material-icons footer-icon">fullscreen</i>
         </a>
-        <a href="{{stringDownloadImagem}}"
+        <a class="tooltip" href="{{stringDownloadImagem}}"
            download="{{defaultDownloadName}} {{indexImagemAtual}}.png"
            *ngIf="download">
+            <span *ngIf="enableTooltip" class="tooltiptext">{{downloadTooltipLabel}}</span>
             <i class="material-icons footer-icon">file_download</i>
         </a>
     </div>

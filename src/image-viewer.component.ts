@@ -34,6 +34,12 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() buttonsColor = 'white';
     @Input() buttonsHover = '#333333';
     @Input() defaultDownloadName = 'Image';
+    @Input() rotateRightTooltipLabel = 'Rotate right';
+    @Input() rotateLeftTooltipLabel = 'Rotate left';
+    @Input() resetZoomTooltipLabel = 'Reset zoom';
+    @Input() fullscreenTooltipLabel = 'Fullscreen';
+    @Input() downloadTooltipLabel = 'Download';
+    @Input() enableTooltip = true;
 
     @Output() onNext = new EventEmitter();
     @Output() onPrevious = new EventEmitter();
@@ -218,21 +224,31 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     rotacionarDireita() {
-        this.resetarZoom();
-        this.rotacaoImagemAtual += this.ROTACAO_PADRAO_GRAUS;
-        this.isImagemVertical = !this.isImagemVertical;
-        this.atualizarRotacao();
+        const timeout = this.resetarZoom();
+        setTimeout(() => {
+            this.rotacaoImagemAtual += this.ROTACAO_PADRAO_GRAUS;
+            this.isImagemVertical = !this.isImagemVertical;
+            this.atualizarRotacao();
+        }, timeout);
     }
 
     rotacionarEsquerda() {
-        this.resetarZoom();
-        this.rotacaoImagemAtual -= this.ROTACAO_PADRAO_GRAUS;
-        this.isImagemVertical = !this.isImagemVertical;
-        this.atualizarRotacao();
+        const timeout = this.resetarZoom();
+        setTimeout(() => {
+            this.rotacaoImagemAtual -= this.ROTACAO_PADRAO_GRAUS;
+            this.isImagemVertical = !this.isImagemVertical;
+            this.atualizarRotacao();
+        }, timeout);
     }
 
-    resetarZoom() {
-        this.viewer.zoom(100);
+    resetarZoom(): number {
+        const defaultZoom = 100;
+        this.viewer.zoom(defaultZoom);
+        let timeout = 500;
+        if (this.viewer.zoomValue === defaultZoom) {
+            timeout = 0;
+        }
+        return timeout;
     }
 
     atualizarRotacao(isAnimacao = true) {
