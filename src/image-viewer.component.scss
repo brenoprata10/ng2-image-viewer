@@ -5,7 +5,7 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
+  z-index: 1000;
 }
 
 .tooltip .tooltiptext {
@@ -19,7 +19,7 @@
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 50%;
+  left: 40%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;

@@ -39,6 +39,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() resetZoomTooltipLabel = 'Reset zoom';
     @Input() fullscreenTooltipLabel = 'Fullscreen';
     @Input() downloadTooltipLabel = 'Download';
+    @Input() showPDFOnlyLabel = 'Show only PDF';
     @Input() enableTooltip = true;
 
     @Output() onNext = new EventEmitter();
@@ -54,6 +55,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     stringDownloadImagem: string;
     isImagemVertical: boolean;
     mostrarPainelOpcoes = true;
+    showOnlyPDF = false;
 
     ngOnInit() {
         if (this.loadOnInit) {
@@ -180,7 +182,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     esconderBotoesImageViewer() {
         $('.iv-loader').css('visibility', 'hidden');
-        $('.inline-icon').css('visibility', 'hidden');
+        this.showOptions = false;
     }
 
     isPDF() {
@@ -190,6 +192,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     prepararTrocaImagem() {
         this.rotacaoImagemAtual = 0;
         this.limparCacheElementos();
+        this.showOptions = true;
     }
 
     limparCacheElementos() {
@@ -210,6 +213,10 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
             this.indexImagemAtual = 1;
         }
         this.onNext.emit(this.indexImagemAtual);
+        if (!this.isPDF() && this.showOnlyPDF) {
+            this.proximaImagem();
+            return;
+        }
         this.showImage();
     }
 
@@ -220,6 +227,10 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
             this.indexImagemAtual = this.totalImagens;
         }
         this.onPrevious.emit(this.indexImagemAtual);
+        if (!this.isPDF() && this.showOnlyPDF) {
+            this.imagemAnterior();
+            return;
+        }
         this.showImage();
     }
 
@@ -330,6 +341,11 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
             bytes[i] = ascii;
         }
         return bytes;
+    }
+
+    showPDFOnly() {
+        this.showOnlyPDF = !this.showOnlyPDF;
+        this.proximaImagem();
     }
 
 }

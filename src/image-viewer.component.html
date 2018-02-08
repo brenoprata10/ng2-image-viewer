@@ -1,28 +1,39 @@
 <div id="{{idContainer}}" class="image-gallery-2">
     <div class="image-container"></div>
-    <div class="inline-icon" *ngIf="showOptions">
-        <a class="tooltip" (click)="rotacionarDireita()" *ngIf="rotate">
-            <span *ngIf="enableTooltip" class="tooltiptext">{{rotateRightTooltipLabel}}</span>
-            <i class="material-icons footer-icon">rotate_right</i>
-        </a>
-        <a class="tooltip" (click)="rotacionarEsquerda()" *ngIf="rotate">
-            <span *ngIf="enableTooltip" class="tooltiptext">{{rotateLeftTooltipLabel}}</span>
-            <i class="material-icons footer-icon">rotate_left</i>
-        </a>
-        <a class="tooltip" (click)="resetarZoom()" *ngIf="resetZoom">
-            <span *ngIf="enableTooltip" class="tooltiptext">{{resetZoomTooltipLabel}}</span>
-            <i class="material-icons footer-icon">fullscreen_exit</i>
-        </a>
-        <a class="tooltip" (click)="mostrarFullscreen()"  *ngIf="fullscreen">
-            <span *ngIf="enableTooltip" class="tooltiptext">{{fullscreenTooltipLabel}}</span>
-            <i class="material-icons footer-icon">fullscreen</i>
-        </a>
-        <a class="tooltip" href="{{stringDownloadImagem}}"
-           download="{{defaultDownloadName}} {{indexImagemAtual}}.png"
-           *ngIf="download">
-            <span *ngIf="enableTooltip" class="tooltiptext">{{downloadTooltipLabel}}</span>
-            <i class="material-icons footer-icon">file_download</i>
-        </a>
+    <div class="inline-icon">
+        <div>
+            <a class="tooltip" (click)="showPDFOnly()">
+                <span *ngIf="enableTooltip" class="tooltiptext filterTooltip">
+                    <span>{{showPDFOnlyLabel}}:</span>
+                    <i class="material-icons">{{showOnlyPDF ? 'check':'close'}}</i>
+                </span>
+                <i class="material-icons footer-icon">picture_as_pdf</i>
+            </a>
+        </div>
+        <div *ngIf="showOptions">
+            <a class="tooltip" (click)="rotacionarDireita()" *ngIf="rotate">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{rotateRightTooltipLabel}}</span>
+                <i class="material-icons footer-icon">rotate_right</i>
+            </a>
+            <a class="tooltip" (click)="rotacionarEsquerda()" *ngIf="rotate">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{rotateLeftTooltipLabel}}</span>
+                <i class="material-icons footer-icon">rotate_left</i>
+            </a>
+            <a class="tooltip" (click)="resetarZoom()" *ngIf="resetZoom">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{resetZoomTooltipLabel}}</span>
+                <i class="material-icons footer-icon">fullscreen_exit</i>
+            </a>
+            <a class="tooltip" (click)="mostrarFullscreen()"  *ngIf="fullscreen">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{fullscreenTooltipLabel}}</span>
+                <i class="material-icons footer-icon">fullscreen</i>
+            </a>
+            <a class="tooltip" href="{{stringDownloadImagem}}"
+               download="{{defaultDownloadName}} {{indexImagemAtual}}.png"
+               *ngIf="download">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{downloadTooltipLabel}}</span>
+                <i class="material-icons footer-icon">file_download</i>
+            </a>
+        </div>
     </div>
     <i class="material-icons prev" (click)="imagemAnterior()">keyboard_arrow_left</i>
     <i class="material-icons next" (click)="proximaImagem()">keyboard_arrow_right</i>

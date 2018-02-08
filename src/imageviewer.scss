@@ -289,7 +289,6 @@
   font-size: 24px;
   text-align: center;
   color: white;
-  border-top: 1px solid #FFF;
   display:flex;
   justify-content: center;
 }
@@ -319,12 +318,12 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
   float: right;
   padding-left: 5px;
   width: 100%;
-  margin-top: -46px;
+  margin-top: -45px;
 }
 
 .inline-pdf {
@@ -364,5 +363,23 @@
   &:hover {
     transition: 0.3s ease-in-out;
     -webkit-transition: 0.3s ease-in-out;
+  }
+}
+
+
+.filterTooltip {
+  display:flex;
+  justify-content: space-around;
+  width: 160px !important;
+  right: 10% !important;
+  left: 0% !important;
+
+  span {
+    margin-left: 10px;
+  }
+
+  i {
+    margin-right: 10px;
+    font-size: 20px;
   }
 }
