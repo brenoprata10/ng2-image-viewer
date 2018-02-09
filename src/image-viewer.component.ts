@@ -30,6 +30,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() resetZoom = true;
     @Input() loadOnInit = false;
     @Input() showOptions = true;
+    @Input() showPDFOnlyOption = true;
     @Input() primaryColor = '#0176bd';
     @Input() buttonsColor = 'white';
     @Input() buttonsHover = '#333333';
@@ -255,7 +256,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     resetarZoom(): number {
         const defaultZoom = 100;
         this.viewer.zoom(defaultZoom);
-        let timeout = 500;
+        let timeout = 800;
         if (this.viewer.zoomValue === defaultZoom) {
             timeout = 0;
         }
@@ -308,10 +309,13 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     mostrarFullscreen() {
-        this.viewerFullscreen = ImageViewer();
-        const imgSrc = this.BASE_64_PNG + this.getImagemAtual();
-        this.viewerFullscreen.show(imgSrc, imgSrc);
-        this.atualizarRotacao(false);
+        const timeout = this.resetarZoom();
+        setTimeout(() => {
+            this.viewerFullscreen = ImageViewer();
+            const imgSrc = this.BASE_64_PNG + this.getImagemAtual();
+            this.viewerFullscreen.show(imgSrc, imgSrc);
+            this.atualizarRotacao(false);
+        }, timeout);
     }
 
     converterPDFBase64ParaBlob() {

@@ -2,7 +2,7 @@
     <div class="image-container"></div>
     <div class="inline-icon">
         <div>
-            <a class="tooltip" (click)="showPDFOnly()">
+            <a class="tooltip" (click)="showPDFOnly()" *ngIf="showPDFOnlyOption">
                 <span *ngIf="enableTooltip" class="tooltiptext filterTooltip">
                     <span>{{showPDFOnlyLabel}}:</span>
                     <i class="material-icons">{{showOnlyPDF ? 'check':'close'}}</i>

@@ -1,9 +1,7 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SampleService } from './sample.service';
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ImageViewerComponent} from './image-viewer.component';
 
-export * from './sample.service';
 export * from './image-viewer.component'
 
 @NgModule({
@@ -21,7 +19,6 @@ export class ImageViewerModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: ImageViewerModule,
-            providers: [SampleService]
         };
     }
 }

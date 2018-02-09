@@ -25,7 +25,7 @@
 ## Donate:
 <section>
 
-<p>You can donate on my Patreon! (Any value would be more than welcomed!)</p>
+<p>You can donate on my Patreon! (No one have donated yet, be the first one!)</p>
 
 <p>
 <a href="https://www.patreon.com/brenoprata">My Patreon o/</a>
@@ -116,7 +116,14 @@
             <td align="center">boolean</td>
             <td align="center"></td>
             <td align="center">true</td>
-            <td align="justify">It is the boolean that options panel at the top right corner</td>
+            <td align="justify">It is the boolean that renders the options panel at the top right corner</td>
+        </tr>
+        <tr>
+            <td align="center">showPDFOnlyOption</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that renders the PDF only button</td>
         </tr>
         <tr>
             <td align="center">loadOnInit</td>
@@ -146,6 +153,55 @@
             <td align="center">'#333333'</td>
             <td align="justify">It is the color used on the hover event, when the button receive the mouse pointer</td>
         </tr>
+        <tr>
+            <td align="center">enableTooltip</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that renders the tooltips above the buttons</td>
+        </tr> 
+        <tr>
+            <td align="center">rotateRightTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Rotate right'</td>
+            <td align="justify">It is the tooltip value you want for the rotate right button</td>
+        </tr>     
+        <tr>
+            <td align="center">rotateLeftTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Rotate left'</td>
+            <td align="justify">It is the tooltip value you want for the rotate left button</td>
+        </tr>   
+        <tr>
+            <td align="center">resetZoomTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Reset zoom'</td>
+            <td align="justify">It is the tooltip value you want for the reset zoom button</td>
+        </tr>     
+        <tr>
+            <td align="center">fullscreenTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Fullscreen'</td>
+            <td align="justify">It is the tooltip value you want for the fullscreen button</td>
+        </tr>     
+        <tr>
+            <td align="center">downloadTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Download'</td>
+            <td align="justify">It is the tooltip value you want for the download button</td>
+        </tr>    
+        <tr>
+            <td align="center">showPDFOnlyLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Show only PDF'</td>
+            <td align="justify">It is the tooltip value you want for the show PDF only button</td>
+        </tr>  
         <tr>
             <td align="center">onNext</td>
             <td align="center">EventEmitter</td>
@@ -225,6 +281,17 @@ Once your library is imported, you can use its components, directives and pipes 
 ```
 
 ## Changelog
+<h5>- 1.0.9:</h5>
+<ul>
+    <li>Increased performance</li>
+    <li>Fix bug when rotating images</li>
+    <li>Added tooltips</li>
+    <li>Added input to hide tooltips</li>
+    <li>Added input to costumize tooltips labels</li>
+    <li>Added new button: Show PDF only</li>
+    <li>Added new input to hide showPDFOnly button</li>
+    <li>Some design changes</li>
+</ul>
 <h5>- 1.0.8:</h5>
 <ul>
     <li>Added two event emitters(OnNext and OnPrevious)</li>
