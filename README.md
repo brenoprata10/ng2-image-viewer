@@ -281,7 +281,7 @@ Once your library is imported, you can use its components, directives and pipes 
 ```
 
 ## Changelog
-<h5>- 1.0.9:</h5>
+<h4>- 1.0.9:</h4>
 <ul>
     <li>Increased performance</li>
     <li>Fix bug when rotating images</li>
@@ -292,7 +292,7 @@ Once your library is imported, you can use its components, directives and pipes 
     <li>Added new input to hide showPDFOnly button</li>
     <li>Some design changes</li>
 </ul>
-<h5>- 1.0.8:</h5>
+<h4>- 1.0.8:</h4>
 <ul>
     <li>Added two event emitters(OnNext and OnPrevious)</li>
     <li>Adjust on the smart scale when rotating</li>
