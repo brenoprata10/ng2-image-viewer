@@ -7,7 +7,7 @@
 <div class="container-image-viewer">
 
   <div class="row">
-    <app-image-viewer class="col s12 m8"
+    <app-image-viewer class="col s12 m8 offset-m1"
                       [images]="images"
                       [idContainer]="'demo'"
                       [loadOnInit]="true"
@@ -20,16 +20,17 @@
                       [showOptions]="formGroup.get('options').value"
                       [defaultDownloadName]="formGroup.get('defaultDownloadName').value"
                       (onNext)="alertWhenChange($event)"
-                      (onPrevious)="alertWhenChange($event)">
+                      (onPrevious)="alertWhenChange($event)"
+                      [rotateRightTooltipLabel]="'Customizable: Rotate right'">
     </app-image-viewer>
-    <form [formGroup]="formGroup" class="col s12 m4 row">
-      <mz-input-container class="col s4">
+    <form [formGroup]="formGroup" class="col s12 m3 row">
+      <mz-input-container class="col s6">
 
         <input mz-input mz-validation type="color"
                formControlName="primaryColor"
                [label]="'Primary Color'">
       </mz-input-container>
-      <mz-input-container class="col s4">
+      <mz-input-container class="col s6">
         <input mz-input mz-validation type="color"
                formControlName="buttonsColor"
                [label]="'Buttons Color'">
