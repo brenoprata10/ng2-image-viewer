@@ -193,7 +193,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     prepararTrocaImagem() {
         this.rotacaoImagemAtual = 0;
         this.limparCacheElementos();
-        this.showOptions = true;
     }
 
     limparCacheElementos() {
