@@ -183,7 +183,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     esconderBotoesImageViewer() {
         $('.iv-loader').css('visibility', 'hidden');
-        this.showOptions = false;
+        $('.options-image-viewer').css('visibility', 'hidden');
     }
 
     isPDF() {
@@ -199,7 +199,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         $('.iframeViewer').remove();
         $('.iv-large-image').remove();
         $('.iv-loader').css('visibility', 'auto');
-        $('.inline-icon').css('visibility', 'inherit');
+        $('.options-image-viewer').css('visibility', 'inherit');
     }
 
     getPdfBase64(): string {
