@@ -11,6 +11,15 @@
             </a>
         </div>
         <div *ngIf="showOptions" class="options-image-viewer">
+            <a class="tooltip" (click)="zoomIn()" *ngIf="zoomInButton">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{zoomInTooltipLabel}}</span>
+                <i class="material-icons footer-icon">zoom_in</i>
+            </a>
+            <a class="tooltip" (click)="zoomOut()" *ngIf="zoomOutButton">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{zoomOutTooltipLabel}}</span>
+                <i class="material-icons footer-icon">zoom_out</i>
+            </a>
+
             <a class="tooltip" (click)="rotacionarDireita()" *ngIf="rotate">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{rotateRightTooltipLabel}}</span>
                 <i class="material-icons footer-icon">rotate_right</i>
