@@ -30,6 +30,9 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() resetZoom = true;
     @Input() loadOnInit = false;
     @Input() showOptions = true;
+    @Input() zoomInButton: boolean = true;
+    @Input() zoomOutButton: boolean = true;
+
     @Input() showPDFOnlyOption = true;
     @Input() primaryColor = '#0176bd';
     @Input() buttonsColor = 'white';
@@ -39,6 +42,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() rotateLeftTooltipLabel = 'Rotate left';
     @Input() resetZoomTooltipLabel = 'Reset zoom';
     @Input() fullscreenTooltipLabel = 'Fullscreen';
+    @Input() zoomInTooltipLabel = 'Zoom In';
+    @Input() zoomOutTooltipLabel = 'Zoom Out';
     @Input() downloadTooltipLabel = 'Download';
     @Input() showPDFOnlyLabel = 'Show only PDF';
     @Input() enableTooltip = true;
@@ -57,6 +62,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     isImagemVertical: boolean;
     mostrarPainelOpcoes = true;
     showOnlyPDF = false;
+
+    zoomPercent: number = 100;
 
     ngOnInit() {
         if (this.loadOnInit) {
@@ -89,6 +96,19 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.buttonsColorChange(changes);
         this.buttonsHoverChange(changes);
         this.defaultDownloadNameChange(changes);
+    }
+
+    zoomIn() {
+        this.zoomPercent += 10;
+        this.viewer.zoom(this.zoomPercent);
+    }
+
+    zoomOut() {
+        if (this.zoomPercent == 100) return;
+
+        this.zoomPercent -= 10;
+        if (this.zoomPercent < 0) this.zoomPercent = 0;
+        this.viewer.zoom(this.zoomPercent);
     }
 
     primaryColorChange(changes: SimpleChanges) {
@@ -253,10 +273,10 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     resetarZoom(): number {
-        const defaultZoom = 100;
-        this.viewer.zoom(defaultZoom);
+        this.zoomPercent = 100;
+        this.viewer.zoom(this.zoomPercent);
         let timeout = 800;
-        if (this.viewer.zoomValue === defaultZoom) {
+        if (this.viewer.zoomValue === this.zoomPercent) {
             timeout = 0;
         }
         return timeout;
