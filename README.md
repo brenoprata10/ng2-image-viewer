@@ -98,6 +98,34 @@
             <td align="justify">It is the boolean that renders the resetZoom button</td>
         </tr>
         <tr>
+            <td align="center">zoomInButton</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that renders the Zoom In Button</td>
+        </tr>
+        <tr>
+            <td align="center">zoomOutButton</td>
+            <td align="center">boolean</td>
+            <td align="center"></td>
+            <td align="center">true</td>
+            <td align="justify">It is the boolean that renders the Zoom Out Button</td>
+        </tr>
+        <tr>
+            <td align="center">zoomInTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">Zoom In</td>
+            <td align="justify">It is the tooltip value you want for the zoom in button</td>
+        </tr>
+        <tr>
+            <td align="center">zoomOutTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">Zoom Out</td>
+            <td align="justify">It is the tooltip value you want for the zoom out button</td>
+        </tr>
+        <tr>
             <td align="center">download</td>
             <td align="center">boolean</td>
             <td align="center"></td>
