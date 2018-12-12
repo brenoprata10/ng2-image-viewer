@@ -11,18 +11,15 @@ function __export(m) {
 exports.__esModule = true;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var sample_service_1 = require("./sample.service");
 var image_viewer_component_1 = require("./image-viewer.component");
-__export(require("./sample.service"));
 __export(require("./image-viewer.component"));
-var ImageViewerModule = (function () {
+var ImageViewerModule = /** @class */ (function () {
     function ImageViewerModule() {
     }
     ImageViewerModule_1 = ImageViewerModule;
     ImageViewerModule.forRoot = function () {
         return {
-            ngModule: ImageViewerModule_1,
-            providers: [sample_service_1.SampleService]
+            ngModule: ImageViewerModule_1
         };
     };
     ImageViewerModule = ImageViewerModule_1 = __decorate([
