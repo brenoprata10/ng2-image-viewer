@@ -26,6 +26,12 @@ export class AppComponent implements OnInit {
     });
     this.images.push(BaseImage.IMAGE);
     this.images.push(BasePDF.PDF);
+    this.images.push('https://picsum.photos/900/500/?random');
+    this.images.push('https://picsum.photos/800/500/?random');
+    this.images.push('https://picsum.photos/1000/500/?random');
+    this.images.push('https://picsum.photos/400/500/?random');
+    this.images.push('https://picsum.photos/2000/900/?random');
+    this.images.push('https://picsum.photos/600/700/?random');
   }
 
   alertWhenChange(event) {
