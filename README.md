@@ -8,6 +8,9 @@
             <strong>Show images and PDF files, you can navigate through it;</strong>
         </li>
         <li>
+            <strong>You can load URL images, Base64 images and pdf;</strong>
+        </li>
+        <li>
             <strong>Rotate each image as you wish;</strong>
         </li>
         <li>
@@ -19,13 +22,16 @@
         <li>
             <strong>Fullscreen your files;</strong>
         </li>
+        <li>
+            <strong>Fully responsive design</strong>
+        </li>
     </ul>
 </section>
 
 ## Donate:
 <section>
 
-<p>You can donate on my Patreon! (No one have donated yet, be the first one!)</p>
+<p>You can donate on my Patreon!</p>
 
 <p>
 <a href="https://www.patreon.com/brenoprata">My Patreon o/</a>
@@ -71,7 +77,7 @@
         </tr>
         <tr>
             <td align="center">images</td>
-            <td align="center">BASE64[]</td>
+            <td align="center">BASE64/URL[]</td>
             <td align="center"></td>
             <td align="center">NULL</td>
             <td align="justify">It is the array containing the base64 data, the component differs the images and the PDF files, so don't worry.</td>
@@ -316,6 +322,13 @@ Once your library is imported, you can use its components, directives and pipes 
 ```
 
 ## Changelog
+
+<h4>- Next versions spoilers:</h4>
+<ul>
+    <li> Some design changes</li>
+    <li> Smart preview on container</li>
+    <li> Better button adjustment on mobile devices</li>
+</ul>
 
 <h4>- 2.0:</h4>
 <ul>
