@@ -11,36 +11,61 @@
             </a>
         </div>
         <div *ngIf="showOptions" class="options-image-viewer">
-            <a class="tooltip" (click)="zoomIn()" *ngIf="zoomInButton">
+            <a class="tooltip" *ngIf="zoomInButton"
+               (click)="zoomIn()" 
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{zoomInTooltipLabel}}</span>
                 <i class="material-icons footer-icon">zoom_in</i>
             </a>
-            <a class="tooltip" (click)="zoomOut()" *ngIf="zoomOutButton">
+            <a class="tooltip"
+               *ngIf="zoomOutButton"
+               (click)="zoomOut()" 
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{zoomOutTooltipLabel}}</span>
                 <i class="material-icons footer-icon">zoom_out</i>
             </a>
 
-            <a class="tooltip" (click)="rotacionarDireita()" *ngIf="rotate">
+            <a class="tooltip"
+               *ngIf="rotate"
+               (click)="rotacionarDireita()" 
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{rotateRightTooltipLabel}}</span>
                 <i class="material-icons footer-icon">rotate_right</i>
             </a>
-            <a class="tooltip" (click)="rotacionarEsquerda()" *ngIf="rotate">
+            <a class="tooltip"
+               *ngIf="rotate"
+               (click)="rotacionarEsquerda()" 
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{rotateLeftTooltipLabel}}</span>
                 <i class="material-icons footer-icon">rotate_left</i>
             </a>
-            <a class="tooltip" (click)="resetarZoom()" *ngIf="resetZoom">
+            <a class="tooltip"
+               *ngIf="resetZoom"
+               (click)="resetarZoom()" 
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{resetZoomTooltipLabel}}</span>
                 <i class="material-icons footer-icon">fullscreen_exit</i>
             </a>
-            <a class="tooltip" (click)="mostrarFullscreen()"  *ngIf="fullscreen">
+            <a class="tooltip"
+               *ngIf="fullscreen"
+               (click)="mostrarFullscreen()"  
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
                 <span *ngIf="enableTooltip" class="tooltiptext">{{fullscreenTooltipLabel}}</span>
                 <i class="material-icons footer-icon">fullscreen</i>
             </a>
-            <a class="tooltip" href="{{stringDownloadImagem}}"
+            <a class="tooltip" target="_blank" href="{{stringDownloadImagem}}"
                download="{{defaultDownloadName}} {{indexImagemAtual}}.png"
-               *ngIf="download">
-                <span *ngIf="enableTooltip" class="tooltiptext">{{downloadTooltipLabel}}</span>
-                <i class="material-icons footer-icon">file_download</i>
+               *ngIf="download"
+               (mouseover)="atualizarCorHoverIn($event)"
+               (mouseout)="atualizarCorHoverOut($event)">
+                <span *ngIf="enableTooltip" class="tooltiptext">{{isURlImagem() ? openInNewTabTooltipLabel : downloadTooltipLabel}}</span>
+                <i class="material-icons footer-icon">{{isURlImagem() ? 'open_in_browser' : 'file_download'}}</i>
             </a>
         </div>
     </div>

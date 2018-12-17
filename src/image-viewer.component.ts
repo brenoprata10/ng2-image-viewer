@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges} from '@angular/core';
 
 declare var $: any;
 declare var ImageViewer: any;
@@ -30,8 +30,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() resetZoom = true;
     @Input() loadOnInit = false;
     @Input() showOptions = true;
-    @Input() zoomInButton: boolean = true;
-    @Input() zoomOutButton: boolean = true;
+    @Input() zoomInButton = true;
+    @Input() zoomOutButton = true;
 
     @Input() showPDFOnlyOption = true;
     @Input() primaryColor = '#0176bd';
@@ -46,6 +46,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     @Input() zoomOutTooltipLabel = 'Zoom Out';
     @Input() downloadTooltipLabel = 'Download';
     @Input() showPDFOnlyLabel = 'Show only PDF';
+    @Input() openInNewTabTooltipLabel = 'Open in new tab';
     @Input() enableTooltip = true;
 
     @Output() onNext = new EventEmitter();
@@ -63,7 +64,9 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     mostrarPainelOpcoes = true;
     showOnlyPDF = false;
 
-    zoomPercent: number = 100;
+    zoomPercent = 100;
+
+    constructor(private renderer: Renderer2) {}
 
     ngOnInit() {
         if (this.loadOnInit) {
@@ -82,19 +85,15 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     private inicializarCores() {
-        $('.inline-icon').css('background-color', this.primaryColor);
-        $('.footer-info').css('background-color', this.primaryColor);
-        $('.footer-icon').css('color', this.buttonsColor);
-        $('.footer-icon').hover(function () {
-            $(this).css('color', this.buttonsHover);
-        });
+        this.setStyleClass('inline-icon', 'background-color', this.primaryColor);
+        this.setStyleClass('footer-info', 'background-color', this.primaryColor);
+        this.setStyleClass('footer-icon', 'color', this.buttonsColor);
     }
 
     ngOnChanges(changes: SimpleChanges) {
         this.imagesChange(changes);
         this.primaryColorChange(changes);
         this.buttonsColorChange(changes);
-        this.buttonsHoverChange(changes);
         this.defaultDownloadNameChange(changes);
     }
 
@@ -104,18 +103,26 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     zoomOut() {
-        if (this.zoomPercent == 100) return;
+        if (this.zoomPercent === 100) {
+
+            return;
+        }
 
         this.zoomPercent -= 10;
-        if (this.zoomPercent < 0) this.zoomPercent = 0;
+
+        if (this.zoomPercent < 0) {
+
+            this.zoomPercent = 0;
+        }
+
         this.viewer.zoom(this.zoomPercent);
     }
 
     primaryColorChange(changes: SimpleChanges) {
         if (changes['primaryColor'] || changes['showOptions']) {
             setTimeout(() => {
-                $('.inline-icon').css('background-color', this.primaryColor);
-                $('.footer-info').css('background-color', this.primaryColor);
+                this.setStyleClass('inline-icon', 'background-color', this.primaryColor);
+                this.setStyleClass('footer-info', 'background-color', this.primaryColor);
             }, 350);
         }
     }
@@ -124,16 +131,9 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         if (changes['buttonsColor'] || changes['rotate'] || changes['download']
         || changes['fullscreen']) {
             setTimeout(() => {
-                $('.footer-icon').css('color', this.buttonsColor);
-            }, 350);
-        }
-    }
 
-    buttonsHoverChange(changes: SimpleChanges) {
-        if (changes['buttonsHover']) {
-            $('.footer-icon').hover(function(){
-                $(this).css('color', this.buttonsHover);
-            });
+                this.setStyleClass('footer-icon', 'color', this.buttonsColor);
+            }, 350);
         }
     }
 
@@ -172,7 +172,12 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
         let imgObj = this.BASE_64_PNG;
         if (this.isPDF()) {
+
             this.carregarViewerPDF();
+        } else if (this.isURlImagem()) {
+
+            imgObj = this.getImagemAtual();
+            this.stringDownloadImagem = this.getImagemAtual();
         } else {
             imgObj = this.BASE_64_PNG + this.getImagemAtual();
             this.stringDownloadImagem = this.BASE_64_IMAGE + this.getImagemAtual();
@@ -189,25 +194,38 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     injetarIframe(widthIframe: number, heightIframe: number) {
-        $(`<iframe class="iframeViewer"
-        style="width: ${widthIframe}px; height: ${heightIframe}px"
-        src="${this.converterPDFBase64ParaBlob()}"
-       </iframe>`).appendTo('.iv-image-wrap');
+        const ivImageWrap = document.getElementsByClassName('iv-image-wrap').item(0);
+
+        const iframe = document.createElement('iframe');
+
+        iframe.id = this.getIdIframe();
+        iframe.style.width = `${widthIframe}px`;
+        iframe.style.height = `${heightIframe}px`;
+        iframe.src = `${this.converterPDFBase64ParaBlob()}`;
+
+        this.renderer.appendChild(ivImageWrap, iframe);
     }
 
     getTamanhoIframe() {
-        const widthIframe = parseFloat($(`#${this.idContainer}`).css('width'));
-        const heightIframe = parseFloat($(`#${this.idContainer}`).css('height'));
+
+        const container = document.getElementById(this.idContainer);
+
+        const widthIframe = container.offsetWidth;
+        const heightIframe = container.offsetHeight;
         return {widthIframe, heightIframe};
     }
 
     esconderBotoesImageViewer() {
-        $('.iv-loader').css('visibility', 'hidden');
-        $('.options-image-viewer').css('visibility', 'hidden');
+        this.setStyleClass('iv-loader', 'visibility', 'hidden');
+        this.setStyleClass('options-image-viewer', 'visibility', 'hidden');
     }
 
     isPDF() {
         return this.getImagemAtual().startsWith('JVBE') || this.getImagemAtual().startsWith('0M8R');
+    }
+
+    isURlImagem() {
+        return this.getImagemAtual().match(new RegExp(/(https|http|www\.)/g));
     }
 
     prepararTrocaImagem() {
@@ -216,14 +234,23 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     limparCacheElementos() {
-        $('.iframeViewer').remove();
-        $('.iv-large-image').remove();
-        $('.iv-loader').css('visibility', 'auto');
-        $('.options-image-viewer').css('visibility', 'inherit');
-    }
 
-    getPdfBase64(): string {
-        return `${this.BASE_64_PDF}${this.getImagemAtual()}`;
+        const container = document.getElementById(this.idContainer);
+        const iframeElement = document.getElementById(this.getIdIframe());
+        const ivLargeImage = document.getElementsByClassName('iv-large-image').item(0);
+
+        if (iframeElement) {
+
+            this.renderer.removeChild(container, iframeElement);
+        }
+
+        if (iframeElement) {
+
+            this.renderer.removeChild(container, ivLargeImage);
+        }
+
+        this.setStyleClass('iv-loader', 'visibility', 'auto');
+        this.setStyleClass('options-image-viewer', 'visibility', 'inherit');
     }
 
     proximaImagem() {
@@ -286,52 +313,82 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         let scale = '';
         if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
             scale = `scale(${this.getScale()})`;
+            console.log(scale);
         }
         const novaRotacao = `rotate(${this.rotacaoImagemAtual}deg)`;
         this.carregarImagem(novaRotacao, scale, isAnimacao);
     }
 
     getScale() {
-        return (parseFloat($('.iv-large-image').css('width')) - (parseFloat($(`#${this.idContainer}`).css('height')))) * 2.3 / (parseFloat($(`#${this.idContainer}`).css('height')));
+
+        const containerElement = document.getElementById(this.idContainer);
+        const ivLargeImageElement = document.getElementsByClassName('iv-large-image').item(0);
+        const diferencaTamanhoImagem = ivLargeImageElement.clientWidth - containerElement.clientHeight;
+
+        if (diferencaTamanhoImagem >= 250 && diferencaTamanhoImagem < 300) {
+
+            return (ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight) - 0.1;
+        } else if (diferencaTamanhoImagem >= 300 && diferencaTamanhoImagem < 400) {
+
+            return ((ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight)) - 0.15;
+        } else if (diferencaTamanhoImagem >= 400) {
+
+            return ((ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight)) - 0.32;
+        }
+
+        return 0.6;
     }
 
     isImagemSobrepondoNaVertical() {
+
         const margemErro = 5;
-        return parseFloat($(`#${this.idContainer}`).css('height')) < parseFloat($('.iv-large-image').css('width')) + margemErro;
+        const containerElement: Element = document.getElementById(this.idContainer);
+        const ivLargeImageElement: Element = document.getElementsByClassName('iv-large-image').item(0);
+
+        return containerElement.clientHeight < ivLargeImageElement.clientWidth + margemErro;
     }
 
     carregarImagem(novaRotacao: string, scale: string, isAnimacao = true) {
         if (isAnimacao) {
-            this.adicionarAnimacao('.iv-snap-image');
-            this.adicionarAnimacao('.iv-large-image');
+            this.adicionarAnimacao('iv-snap-image');
+            this.adicionarAnimacao('iv-large-image');
         }
-        this.adicionarRotacao('.iv-snap-image', novaRotacao, scale);
-        this.adicionarRotacao('.iv-large-image', novaRotacao, scale);
+        this.adicionarRotacao('iv-snap-image', novaRotacao, scale);
+        this.adicionarRotacao('iv-large-image', novaRotacao, scale);
         setTimeout(() => {
             if (isAnimacao) {
-                this.retirarAnimacao('.iv-snap-image');
-                this.retirarAnimacao('.iv-large-image');
+                this.retirarAnimacao('iv-snap-image');
+                this.retirarAnimacao('iv-large-image');
             }
         }, 501);
     }
 
     retirarAnimacao(componente: string) {
-        $(componente).css({'transition': `auto`});
+        this.setStyleClass(componente, 'transition', 'auto');
     }
 
     adicionarRotacao(componente: string, novaRotacao: string, scale: string) {
-        $(componente).css({'transform': `${novaRotacao} ${scale}`});
+        this.setStyleClass(componente, 'transform', `${novaRotacao} ${scale}`);
     }
 
     adicionarAnimacao(componente: string) {
-        $(componente).css({'transition': `0.5s linear`});
+        this.setStyleClass(componente, 'transition', `0.5s linear`);
     }
 
     mostrarFullscreen() {
         const timeout = this.resetarZoom();
         setTimeout(() => {
+
             this.viewerFullscreen = ImageViewer();
-            const imgSrc = this.BASE_64_PNG + this.getImagemAtual();
+            let imgSrc;
+
+            if (this.isURlImagem()) {
+
+                imgSrc = this.getImagemAtual();
+            } else {
+
+                imgSrc = this.BASE_64_PNG + this.getImagemAtual();
+            }
             this.viewerFullscreen.show(imgSrc, imgSrc);
             this.atualizarRotacao(false);
         }, timeout);
@@ -371,4 +428,28 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.proximaImagem();
     }
 
+    setStyleClass(nomeClasse: string, nomeStyle: string, cor: string) {
+
+        let cont;
+        const listaElementos = document.getElementsByClassName(nomeClasse);
+
+        for (cont = 0; cont < listaElementos.length; cont++) {
+
+            this.renderer.setStyle(listaElementos.item(cont), nomeStyle, cor);
+        }
+    }
+
+    atualizarCorHoverIn(event: MouseEvent) {
+
+        this.renderer.setStyle(event.srcElement, 'color', this.buttonsHover);
+    }
+
+    atualizarCorHoverOut(event: MouseEvent) {
+
+        this.renderer.setStyle(event.srcElement, 'color', this.buttonsColor);
+    }
+
+    getIdIframe() {
+        return this.idContainer + '-iframe'
+    }
 }
