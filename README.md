@@ -231,6 +231,13 @@
             <td align="justify">It is the tooltip value you want for the show PDF only button</td>
         </tr>  
         <tr>
+            <td align="center">openInNewTabTooltipLabel</td>
+            <td align="center">string</td>
+            <td align="center"></td>
+            <td align="center">'Open in new tab'</td>
+            <td align="justify">It is the tooltip value you want for the open in new tab button</td>
+        </tr>  
+        <tr>
             <td align="center">onNext</td>
             <td align="center">EventEmitter</td>
             <td align="center"></td>
@@ -303,12 +310,23 @@ Once your library is imported, you can use its components, directives and pipes 
 <h1>
   Image Viewer
 </h1>
-<app-image-viewer [images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==']"
+<app-image-viewer [images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==', 'https://picsum.photos/900/500/?random']"
 [idContainer]="'idOnHTML'"
 [loadOnInit]="true"></app-image-viewer>
 ```
 
 ## Changelog
+
+<h4>- 2.0:</h4>
+<ul>
+    <li> Better performance</li>
+    <li> Smarter scaling when image overflows the container when rotated</li>
+    <li> Added support to URL images</li>
+    <li> Added Zoom in and Zoom out buttons</li>
+    <li> Added support to open url images in new tabs</li>
+    <li> Added tooltip label for url images in new tabs</li>
+</ul>
+
 <h4>- 1.0.9:</h4>
 <ul>
     <li>Increased performance</li>

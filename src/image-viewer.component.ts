@@ -313,7 +313,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         let scale = '';
         if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {
             scale = `scale(${this.getScale()})`;
-            console.log(scale);
         }
         const novaRotacao = `rotate(${this.rotacaoImagemAtual}deg)`;
         this.carregarImagem(novaRotacao, scale, isAnimacao);
