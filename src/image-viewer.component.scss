@@ -2,13 +2,13 @@
   font-size: xx-large;
 }
 
-.tooltip {
+.image-viewer-tooltip {
   position: relative;
   display: inline-block;
   z-index: 1000;
 }
 
-.tooltip .tooltiptext {
+.image-viewer-tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
   background-color: #555;
@@ -25,7 +25,7 @@
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after {
+.image-viewer-tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -36,7 +36,7 @@
   border-color: #555 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.image-viewer-tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
