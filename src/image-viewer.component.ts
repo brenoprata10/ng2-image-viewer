@@ -1,6 +1,15 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges} from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    Renderer2,
+    SimpleChanges
+} from '@angular/core';
 
-declare var $: any;
 declare var ImageViewer: any;
 
 /**
@@ -18,9 +27,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     BASE_64_IMAGE = 'data:image/png;base64,';
     BASE_64_PNG = `${this.BASE_64_IMAGE} `;
-    BASE_64_PDF = 'data:application/pdf;base64, ';
     ROTACAO_PADRAO_GRAUS = 90;
-    TOTAL_ROTACAO_GRAUS_VERTICAL = this.ROTACAO_PADRAO_GRAUS * 3;
 
     @Input() idContainer;
     @Input() images: any[];
@@ -61,7 +68,6 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     rotacaoImagemAtual: number;
     stringDownloadImagem: string;
     isImagemVertical: boolean;
-    mostrarPainelOpcoes = true;
     showOnlyPDF = false;
 
     zoomPercent = 100;
@@ -158,13 +164,18 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     inicializarImageViewer() {
+
         this.indexImagemAtual = 1;
-        this.totalImagens = this.images.length;
-        this.wrapper = $(`#${this.idContainer}`);
-        this.curSpan = this.wrapper.find('.current');
-        this.viewer = ImageViewer(this.wrapper.find('.image-container'));
-        this.wrapper.find('.total').html(this.totalImagens);
         this.rotacaoImagemAtual = 0;
+        this.totalImagens = this.images.length;
+
+        this.wrapper = document.getElementById(`${this.idContainer}`);
+
+        if (this.wrapper) {
+            this.curSpan = this.wrapper.querySelector('#current');
+            this.viewer = new ImageViewer(this.wrapper.querySelector('.image-container'));
+            this.wrapper.querySelector('.total').innerHTML = this.totalImagens;
+        }
     }
 
     showImage() {
@@ -183,7 +194,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
             this.stringDownloadImagem = this.BASE_64_IMAGE + this.getImagemAtual();
         }
         this.viewer.load(imgObj, imgObj);
-        this.curSpan.html(this.indexImagemAtual);
+        this.curSpan.innerHTML = this.indexImagemAtual;
         this.inicializarCores();
     }
 
@@ -242,11 +253,14 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         if (iframeElement) {
 
             this.renderer.removeChild(container, iframeElement);
+
+            if (ivLargeImage) {
+
+                this.renderer.removeChild(container, ivLargeImage);
+            }
         }
 
         if (iframeElement) {
-
-            this.renderer.removeChild(container, ivLargeImage);
         }
 
         this.setStyleClass('iv-loader', 'visibility', 'auto');
@@ -303,7 +317,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.zoomPercent = 100;
         this.viewer.zoom(this.zoomPercent);
         let timeout = 800;
-        if (this.viewer.zoomValue === this.zoomPercent) {
+        if (this.viewer._state.zoomValue === this.zoomPercent) {
             timeout = 0;
         }
         return timeout;
