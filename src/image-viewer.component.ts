@@ -10,7 +10,8 @@ import {
     SimpleChanges
 } from '@angular/core';
 
-declare var ImageViewer: any;
+import ImageViewer from 'iv-viewer';
+import {FullScreenViewer} from 'iv-viewer';
 
 /**
  * @author Breno Prata - 22/12/2017
@@ -392,7 +393,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         const timeout = this.resetarZoom();
         setTimeout(() => {
 
-            this.viewerFullscreen = ImageViewer();
+            this.viewerFullscreen = new FullScreenViewer();
             let imgSrc;
 
             if (this.isURlImagem()) {
