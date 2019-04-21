@@ -1,4 +1,4 @@
-<h2>Welcome to Ng2-Image Viewer</h2>
+## Welcome to Ng2-Image Viewer
 <section>
     <p>This component uses the <a href="http://ignitersworld.com/lab/imageViewer.html">Image Viewer JS</a> in it's core.</p>
     <p>Ng2-Image Viewer uses MIT license, so you can use it as you wish, feel free to help contributing with the code.</p>
@@ -27,6 +27,9 @@
         </li>
     </ul>
 </section>
+
+## Upgrading from prior to 3.0
+<p>Take a look at this <a href="https://github.com/brenoprata10/ng2-image-viewer/wiki/Upgrading-from-versions-prior-to-3.0</p>">quick tutorial</a>!
 
 ## Donate:
 <section>
