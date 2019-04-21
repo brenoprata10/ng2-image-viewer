@@ -26,7 +26,6 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.slim.js",
-        "../node_modules/ng2-image-viewer/imageviewer.js",
         "../node_modules/materialize-css/dist/js/materialize.min.js"
       ],
       "environmentSource": "environments/environment.ts",
