@@ -29,7 +29,7 @@
 </section>
 
 ## Upgrading from prior to 3.0
-<p>Take a look at this <a href="https://github.com/brenoprata10/ng2-image-viewer/wiki/Upgrading-from-versions-prior-to-3.0</p>">quick tutorial</a>!
+<p>Take a look at this <a href="https://github.com/brenoprata10/ng2-image-viewer/wiki/Upgrading-from-versions-prior-to-3.0">quick tutorial</a>!
 
 ## Donate:
 <section>
