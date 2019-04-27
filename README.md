@@ -50,9 +50,6 @@
 <section>
     <ul>
         <li>
-            Jquery;
-        </li>
-        <li>
             Material Icons;
         </li>
     </ul>
