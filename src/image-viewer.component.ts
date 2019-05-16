@@ -170,6 +170,12 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
         this.rotacaoImagemAtual = 0;
         this.totalImagens = this.images.length;
 
+        if (this.viewer) {
+
+            this.wrapper.querySelector('.total').innerHTML = this.totalImagens;
+            return;
+        }
+
         this.wrapper = document.getElementById(`${this.idContainer}`);
 
         if (this.wrapper) {
