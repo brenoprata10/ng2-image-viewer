@@ -266,6 +266,7 @@
 To install this library, run:
 
 ```bash
+$ npm install iv-viewer --save
 $ npm install ng2-image-viewer --save
 ```
 
@@ -304,9 +305,6 @@ Now just add the these codes on your angular-cli.json file:
 "styles": [
     "../node_modules/ng2-image-viewer/imageviewer.scss"
 ],
-"scripts": [
-    "../node_modules/ng2-image-viewer/imageviewer.js"
-],
 ```
 
 Once your library is imported, you can use its components, directives and pipes in your Angular application:
@@ -329,6 +327,14 @@ Once your library is imported, you can use its components, directives and pipes 
     <li> Smart preview on container</li>
     <li> Better button adjustment on mobile devices</li>
 </ul>
+
+<h4>- 3.0:</h4>
+<ul>
+    <li> No longer uses Jquery!</li>
+    <li> Uses iv-viewer as peerDependency</li>
+    <li> Now the viewer uses the version 2.0 from <a href="http://ignitersworld.com/lab/imageViewer.html">Image Viewer JS</a>, which is faster and fixes some bugs!</li>
+</ul>
+
 
 <h4>- 2.0:</h4>
 <ul>
