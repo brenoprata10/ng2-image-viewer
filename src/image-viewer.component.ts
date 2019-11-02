@@ -212,7 +212,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     injetarIframe(widthIframe: number, heightIframe: number) {
-        const ivImageWrap = document.getElementsByClassName('iv-image-wrap').item(0);
+        const ivImageWrap = document.getElementById(this.idContainer).getElementsByClassName('iv-image-wrap').item(0);
 
         const iframe = document.createElement('iframe');
 
@@ -255,7 +255,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
         const container = document.getElementById(this.idContainer);
         const iframeElement = document.getElementById(this.getIdIframe());
-        const ivLargeImage = document.getElementsByClassName('iv-large-image').item(0);
+        const ivLargeImage = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);
 
         if (iframeElement) {
 
@@ -342,7 +342,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     getScale() {
 
         const containerElement = document.getElementById(this.idContainer);
-        const ivLargeImageElement = document.getElementsByClassName('iv-large-image').item(0);
+        const ivLargeImageElement = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);
         const diferencaTamanhoImagem = ivLargeImageElement.clientWidth - containerElement.clientHeight;
 
         if (diferencaTamanhoImagem >= 250 && diferencaTamanhoImagem < 300) {
@@ -363,7 +363,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
         const margemErro = 5;
         const containerElement: Element = document.getElementById(this.idContainer);
-        const ivLargeImageElement: Element = document.getElementsByClassName('iv-large-image').item(0);
+        const ivLargeImageElement: Element = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);
 
         return containerElement.clientHeight < ivLargeImageElement.clientWidth + margemErro;
     }
@@ -451,7 +451,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     setStyleClass(nomeClasse: string, nomeStyle: string, cor: string) {
 
         let cont;
-        const listaElementos = document.getElementsByClassName(nomeClasse);
+        const listaElementos = document.getElementById(this.idContainer).getElementsByClassName(nomeClasse);
 
         for (cont = 0; cont < listaElementos.length; cont++) {
 
