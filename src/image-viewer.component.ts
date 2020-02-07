@@ -254,22 +254,20 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     limparCacheElementos() {
 
         const container = document.getElementById(this.idContainer);
+        const ivImageWrap = document.getElementById(this.idContainer).getElementsByClassName('iv-image-wrap').item(0);
         const iframeElement = document.getElementById(this.getIdIframe());
         const ivLargeImage = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);
 
         if (iframeElement) {
 
-            this.renderer.removeChild(container, iframeElement);
+            this.renderer.removeChild(ivImageWrap, iframeElement);
 
             if (ivLargeImage) {
 
-                this.renderer.removeChild(container, ivLargeImage);
+                this.renderer.removeChild(ivImageWrap, ivLargeImage);
             }
         }
-
-        if (iframeElement) {
-        }
-
+        
         this.setStyleClass('iv-loader', 'visibility', 'auto');
         this.setStyleClass('options-image-viewer', 'visibility', 'inherit');
     }
