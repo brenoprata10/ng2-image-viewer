@@ -419,7 +419,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     private getImagemAtual() {
         const index = this.indexImagemAtual - 1;
-        return index < this.images.length ? this.images[this.indexImagemAtual - 1] : '';
+        return index < this.images.length ? this.images[index] : '';
     }
 
     base64ToArrayBuffer(data) {
