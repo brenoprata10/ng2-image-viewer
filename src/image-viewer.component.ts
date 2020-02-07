@@ -187,13 +187,10 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
 
     showImage() {
         this.prepararTrocaImagem();
-
         let imgObj = this.BASE_64_PNG;
         if (this.isPDF()) {
-
             this.carregarViewerPDF();
         } else if (this.isURlImagem()) {
-
             imgObj = this.getImagemAtual();
             this.stringDownloadImagem = this.getImagemAtual();
         } else {
@@ -421,7 +418,8 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     private getImagemAtual() {
-        return this.images[this.indexImagemAtual - 1];
+        const index = this.indexImagemAtual - 1;
+        return index < this.images.length ? this.images[this.indexImagemAtual - 1] : '';
     }
 
     base64ToArrayBuffer(data) {
