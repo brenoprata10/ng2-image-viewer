@@ -243,7 +243,7 @@ export class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     isURlImagem() {
-        return this.getImagemAtual().match(new RegExp(/^(https|http|www\.)/g));
+        return this.getImagemAtual().match(new RegExp(/^(https|http|www\.|blob)/g));
     }
 
     prepararTrocaImagem() {
