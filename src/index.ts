@@ -16,7 +16,7 @@ export * from './image-viewer.component'
     ]
 })
 export class ImageViewerModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<ImageViewerModule> {
         return {
             ngModule: ImageViewerModule,
         };
